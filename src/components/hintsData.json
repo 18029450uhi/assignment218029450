@@ -1,0 +1,56 @@
+{
+    "balances": {
+      "hint": {
+        "titleColumn": [{
+          "linkTitle": "hints",
+          "columnTitle": "Hints"
+        }, {
+          "linkTitle": "general",
+          "columnTitle": "General"
+        }, {
+          "linkTitle": "specific",
+          "columnTitle": "Specific to this problem"
+        }],
+        "video": [{
+          "image": "problem_s.png",
+          "link": "overall",
+          "title": "problem_s",
+          "type": "general"
+        }, {
+          "image": "spec_strat_balan_s.png",
+          "link": "overall",
+          "title": "spec_strat_balan_s",
+          "type": "specific"
+        }, {
+          "image": "mom_s.png",
+          "link": "moments",
+          "title": "mom_s",
+          "type": "general"
+        }, {
+          "image": "spec_mom_s.png",
+          "link": "moments",
+          "title": "spec_mom_s",
+          "type": "specific"
+        }, {
+          "image": "gravity_s.png",
+          "link": "gravity",
+          "title": "gravity_s",
+          "type": "general"
+        }, {
+          "image": "spec_gravity_s.png",
+          "link": "gravity",
+          "title": "spec_gravity_s",
+          "type": "specific"
+        }],
+        "title": [{
+          "linkTitle": "overall",
+          "rowTitle": "Overall solution strategy"
+        }, {
+          "linkTitle": "moments",
+          "rowTitle": "Moments"
+        }, {
+          "linkTitle": "gravity",
+          "rowTitle": "Gravity"
+        }]
+      }
+    }}
