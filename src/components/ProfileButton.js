@@ -3,33 +3,17 @@ import { Link } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import LiveChat from "./LiveChat";
-import LiveChatTest from "./LiveChatTest";
 
 function ProfileButton() {
-
-// modal section 
-const [show, setShow] = useState(false);
-
-const handleClose = () => setShow(false);const handleShow = () => setShow(true);
-
-
+  // modal section
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
   const [user, setUser] = useState(null);
 
-  // firebase.auth().onAuthStateChanged((user) => {
-  //   setUser(user);
-  // });
-
   useEffect(() => {
-    // const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-    //   setUser(user);
-    // });
-
     firebase.auth().onAuthStateChanged((user) => {
       setUser(user);
     });
-
-    // Clean up the listener when the component unmounts
-    // return () => unsubscribe();
   }, []);
 
   const handleLogout = async () => {
@@ -62,14 +46,12 @@ const handleClose = () => setShow(false);const handleShow = () => setShow(true);
           aria-haspopup="true"
           aria-expanded="false"
           onClick={handleProfileClick}
+          style={{ marginRight: "5px" }}
         >
           {userInitial}
         </button>
 
-        <button
-          onClick={handleLogout}
-          className="btn btn-secondary"
-        >
+        <button onClick={handleLogout} className="btn btn-secondary">
           Sign Out
         </button>
 
@@ -83,8 +65,7 @@ const handleClose = () => setShow(false);const handleShow = () => setShow(true);
           </button>
         </div>
       </div>
-      {show && <LiveChat show={show} handleClose={handleClose}/>}
-      {/* {showChat && <LiveChatTest />} */}
+      {show && <LiveChat show={show} handleClose={handleClose} />}
     </div>
   );
 }
