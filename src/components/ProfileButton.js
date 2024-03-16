@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import LiveChat from "./LiveChat";
+import Messages from "./modals/Messages";
 
 function ProfileButton() {
   // modal section
@@ -65,7 +66,7 @@ function ProfileButton() {
           </button>
         </div>
       </div>
-      {show && <LiveChat show={show} handleClose={handleClose} />}
+      {show && <Messages show={show} handleClose={handleClose} />}
     </div>
   );
 }
