@@ -4,63 +4,36 @@ import "firebase/compat/database";
 import "firebase/compat/firestore";
 
 import "firebase/compat/auth";
-//import firebase from 'firebase/compat/app';
 
-//import "firebae/compat/auth";
 import "firebase/compat/storage";
 import { Button, Modal } from "react-bootstrap";
-//import "firebase/compat/database"
-//import { QuerySnapshot } from 'firebase/firestore';
 
 function LiveChat({ show, handleClose }) {
   const [text, setText] = useState([]); //message instead of text
   const [userId, setUserId] = useState("");
-  // const [newMessage, setNewMessage] = useState('');
   const [localMessages, setLocalMessages] = useState([]);
   const [localImage, setLocalImage] = useState(null);
   const admin = ["VG9uye9b8DTQDsFYnvNIxPd2FoC2"];
   const firestore = firebase.firestore();
   const storage = firebase.storage();
-  //const [adminReply, setAdminReply] = useState('');
-  //const [showAdminReply, setShowAdminReply] = useState(false);
+  const messagesRef = firestore.collection("messages");
 
-  // async function getUsers() {
-  //   if (firebase.auth().currentUser.uid) {
-  //     const users = firebase.database().ref("users");
-  //     users.once('value')
-  //       .then(async (snapshot) => {
-  //         const usersData = snapshot.val();
-  //         const userIds = usersData ? Object.keys(usersData) : [];
-  //         if (!userIds.includes(firebase.auth().currentUser?.uid)) {
-  //           await firebase.database().ref("users/" + firebase.auth().currentUser.uid).set({ online: true });
-  //         } else {
-  //           await firebase.database().ref("users/" + firebase.auth().currentUser.uid).set(true);
-  //         }
-  //       })
-  //     firebase.database().ref(`users/${firebase.auth().currentUser.uid}/online`).onDisconnect().set(false);
-  //   }
-  // }
+  console.log("chat", messagesRef);
 
   useEffect(() => {
     setUserId(firebase.auth()?.currentUser?.uid);
     setLocalMessages([]);
-    // var query = firestore.collection('Chats').orderBy("timestamp", "asc");
-    // query.onSnapshot({
-    //   next: (QuerySnapshot) => {
-    //     let messages = []
-    //     QuerySnapshot.forEach((doc) => {
-    //       // console.log(doc.id, '=>' ,doc.data());
-    //       messages.push({ mid: doc.id, ...doc.data() })
-    //     });
-    //     setLocalMessages(messages)
-    //   },
-    // });
-    // getUsers();
   }, []);
-  console.log('message',firestore);
+  console.log("message", firestore);
 
   return (
-    <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+    <Modal
+      show={show}
+      onHide={handleClose}
+      backdrop="static"
+      keyboard={false}
+      size="lg"
+    >
       <div>
         <div
           style={{
@@ -209,7 +182,6 @@ function LiveChat({ show, handleClose }) {
             >
               <input
                 key={Date.now()}
-                style={{ flex: 1 }}
                 type="file"
                 onChange={(e) => {
                   const image = e.target.files[0];
@@ -217,18 +189,8 @@ function LiveChat({ show, handleClose }) {
                   setLocalImage(image);
                 }}
               />
-              <button
-                type="submit"
-                style={{
-                  flex: 1,
-                  backgroundColor: "blanchedalmond",
-                  color: "white",
-                  fontWeight: "bold",
-                  borderWidth: 0,
-                }}
-              >
-                Send
-              </button>
+              <input type="text" name="message" />
+              <button type="submit">Send</button>
             </form>
           </div>
         </div>
