@@ -1,10 +1,9 @@
 import firebase from "firebase/compat/app";
 
 import "firebase/compat/auth";
-//import "firebse/firestore";
 import "firebase/compat/database";
-//import "firebase/compat/auth"
 import "firebase/compat/firestore";
+import "firebase/storage";
 
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
@@ -16,7 +15,7 @@ const firebaseConfig = {
   storageBucket: "ques-assignment.appspot.com",
   databaseUrl: "https://ques-assignment-default-rtdb.firebaseio.com",
   messagingSenderId: "490894151563",
-  appId: "1:490894151563:web:17f511e61472d1f969698e"
+  appId: "1:490894151563:web:17f511e61472d1f969698e",
 };
 
 // Initialize Firebase
@@ -26,9 +25,7 @@ export const auth = firebase.auth;
 export const firestore = firebase.firestore();
 export const db = firebase.database();
 
-
-const imgDB = getStorage(app);
 const textDb = getFirestore(app);
+const storage = firebase.storage();
 
-
-export { imgDB, textDb };
+export { textDb, storage };
