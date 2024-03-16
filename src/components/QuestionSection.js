@@ -1,11 +1,10 @@
 import React from "react";
 
 function QuestionSection({ quesData }) {
-  const title = quesData?.balances?.questions?.title || " ";
-  const questionText =
-    quesData?.balances?.questions?.fullquestion?.question || "";
-  const imageUri =
-    quesData?.balance?.questions?.fullquestion?.questionimage || "";
+  const title = quesData?.questions?.title || " ";
+
+  const questionText = quesData?.questions?.fullquestion?.question || "";
+  const imageUri = quesData?.questions?.fullquestion?.questionimage || "";
 
   return (
     <div className="col-sm-6">
