@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import hintsData from "./balances.json";
 import { Modal, Button } from "react-bootstrap";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import { firestore } from "../services/firebase";
 
 const HintsComponent = ({ quesData }) => {
-  const data = quesData?.balances?.hint;
+  const data = quesData?.hint;
   //   modal
   const [show, setShow] = useState(false);
   const [showMsgForm, setShowMsgForm] = useState(false);
@@ -19,27 +18,9 @@ const HintsComponent = ({ quesData }) => {
   const [errors, setErrors] = useState({});
   const [userId, setUserId] = useState("");
 
- 
   useEffect(() => {
-    importCollection();
-    
     setUserId(firebase.auth()?.currentUser?.uid);
   }, []);
-
-  function importCollection() {
-    const data = hintsData;
-
-    const collectionRef = firebase.firestore().collection("balances");
-
-    collectionRef
-      .add(data)
-      .then((docRef) => {
-        console.log("Document written with ID:", docRef.id);
-      })
-      .catch((error) => {
-        console.error("Error adding document:", error);
-      });
-  }
 
   const handleClose = () => setShow(false);
   const handleShow = (video) => {
