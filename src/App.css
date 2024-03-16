@@ -57,13 +57,22 @@
   flex-wrap: wrap;
 }
 
-.generalHints, .ProblemSpecificHints {
+.generalHints,
+.ProblemSpecificHints {
   width: 50%;
   padding: 10px;
 }
+.ml-25 {
+  margin-left: 25px;
+}
+
+.selected {
+  background-color: green !important;
+}
 
 @media (max-width: 768px) {
-  .GeneralHints, .ProblemSpecificHints {
+  .GeneralHints,
+  .ProblemSpecificHints {
     width: 100%;
   }
 }
