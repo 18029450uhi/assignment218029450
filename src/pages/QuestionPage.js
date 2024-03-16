@@ -59,7 +59,10 @@ function QuestionPage() {
   return (
     <div className="container">
       <div className="d-flex justify-content-end mb-3">
-        <ProfileButton />
+        <ProfileButton
+          updatedData={updatedData}
+          setUpdatedData={setUpdatedData}
+        />
       </div>
       <h1 className="text-center">Question Page</h1>
       <div className="row">
