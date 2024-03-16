@@ -5,7 +5,6 @@ import "firebase/compat/database";
 import "firebase/compat/firestore";
 import "firebase/storage";
 
-import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -26,6 +25,10 @@ export const firestore = firebase.firestore();
 export const db = firebase.database();
 
 const textDb = getFirestore(app);
-const storage = firebase.storage();
+
+let storage;
+setTimeout(() => {
+  storage = firebase.storage();
+});
 
 export { textDb, storage };

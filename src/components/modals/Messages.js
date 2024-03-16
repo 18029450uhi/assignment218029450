@@ -71,13 +71,13 @@ const Messages = ({ show, handleClose }) => {
       <Modal.Header closeButton>
         <Modal.Title id="example-modal-sizes-title-lg">Chat</Modal.Title>
       </Modal.Header>
-      <Modal.Body style={{ height: "80vh", overflowY: "scroll" }}>
+      <Modal.Body  style={{ height: "80vh", overflowY: "scroll" }}>
         {isLoading ? (
           <p>Loading...</p>
         ) : (
           <div className="row">
             {/* Display messages */}
-            <div className="col-md-5 ">
+            <div className="col-md-5 bg-light ">
               <h1 className="">Chat History</h1>
               {userData.map((message) => (
                 <p key={message.id}>{message.text}</p>
@@ -90,29 +90,39 @@ const Messages = ({ show, handleClose }) => {
             >
               <div>
                 {myMessage?.map((message) => (
-                  <div className="w-50 ms-auto">
-                    {message.messageType === "text" && (
-                      <p
-                        key={message.id}
-                        className={
-                          message.userId === currentUser?.uid
-                            ? "text-end bg-primary rounded text-white p-4"
-                            : "text-start bg-secondary rounded text-white p-4"
-                        }
-                      >
-                        {message?.text}
-                      </p>
-                    )}
-                    {message.messageType === "image" && (
-                      <img
-                        style={{ maxHeight: "500px", border: "1px solid" }}
-                        key={message.id}
-                        className="mb-4 rounded w-100 img-fluid"
-                        src={message?.img}
-                        alt=""
-                      />
-                    )}
-                  </div>
+                  <>
+                    <div
+                      className={`w-50 ${
+                        message.sender === currentUser?.email && "ms-auto"
+                      }`}
+                    >
+                      {message.messageType === "text" && (
+                        <p
+                          key={message.id}
+                          className={
+                            message.sender === currentUser?.email
+                              ? "text-end bg-primary rounded text-white p-4"
+                              : "text-start bg-secondary rounded text-white p-4"
+                          }
+                        >
+                          {message?.text}
+                        </p>
+                      )}
+                      {message.messageType === "image" && (
+                        <img
+                          style={{
+                            backgroundColor: "#0e6efd",
+                            padding: "5px",
+                            border: "1px solid",
+                          }}
+                          key={message.id}
+                          className="mb-4 rounded w-100 img-fluid"
+                          src={message?.img}
+                          alt=""
+                        />
+                      )}
+                    </div>
+                  </>
                 ))}
               </div>
             </div>
