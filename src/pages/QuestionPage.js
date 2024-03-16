@@ -4,30 +4,28 @@ import AnswerSection from "../components/AnswerSection";
 import ProfileButton from "../components/ProfileButton";
 
 import { useEffect, useState } from "react";
-import { firestore } from "../services/firebase";
+
 import { Spinner } from "react-bootstrap";
+import { getDatabase, ref, get } from "firebase/database";
 
 function QuestionPage() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [updatedData, setUpdatedData] = useState(false);
 
   const fetchData = async () => {
     try {
       setLoading(true);
+      const questionRef = ref(getDatabase(), `balances`);
+      const snapshot = await get(questionRef);
 
-      const snapshot = await firestore?.collection("balances").get();
-
-      if (snapshot.docs.length > 0) {
-        const fetchedData = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setData(fetchedData[0] || null);
+      if (snapshot.exists()) {
+        setData(snapshot.val());
       } else {
+        console.log("No such document!");
         setData(null);
       }
-
       setLoading(false);
       setError(false);
     } catch (error) {
@@ -37,35 +35,9 @@ function QuestionPage() {
     }
   };
 
-  const [messageList, setMessageList] = useState(null);
-
-  const fetchMessages = async () => {
-    try {
-      const chatCollection = firestore.collection("Chats");
-      const querySnapshot = await chatCollection.get();
-
-      const messages = [];
-      querySnapshot.forEach((doc) => {
-        // Assuming each document in "Chats" has a 'message' field
-        const message = doc.data().message;
-        messages.push(message);
-      });
-
-      setMessageList(messages);
-    } catch (error) {
-      console.error("Error fetching messages:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchMessages();
-  }, []);
-
-  console.log("messageList", messageList);
-
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [updatedData]);
 
   if (loading) {
     return (
@@ -81,10 +53,8 @@ function QuestionPage() {
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <h1 className="text-danger text-center">Firebase error</h1>;
   }
-
-  console.log("data", data);
 
   return (
     <div className="container">
@@ -97,7 +67,13 @@ function QuestionPage() {
         <HintsSection quesData={data} />
       </div>
       <div className="row">
-        <AnswerSection quesData={data} />
+        {data && (
+          <AnswerSection
+            quesData={data}
+            setUpdatedData={setUpdatedData}
+            updatedData={updatedData}
+          />
+        )}
         <svg
           viewBox="0 0 24 24"
           fill="none"
