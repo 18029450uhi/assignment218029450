@@ -24,11 +24,11 @@ const Messages = ({ show, handleClose }) => {
       (m) =>
         m?.sender === currentUser?.email || m?.receiver === currentUser?.email
     )
-    .reverse();
+    // .reverse();  
 
   const adminMessage = messagesData
-    .filter((m) => m?.userRole === "admin" || m?.sender === selectedUser)
-    .reverse();
+    .filter((m) => m?.receiver === selectedUser || m?.sender === selectedUser)
+    // .reverse();
 
   const showMessages =
     findExistingUser?.role === "admin" ? adminMessage : myMessage;
@@ -95,14 +95,7 @@ const Messages = ({ show, handleClose }) => {
       <Modal.Header closeButton>
         <Modal.Title id="example-modal-sizes-title-lg">Chat</Modal.Title>
       </Modal.Header>
-      <Modal.Body
-        style={{
-          height: "80vh",
-          overflowY: "scroll",
-          display: "flex",
-          flexDirection: "column-reverse",
-        }}
-      >
+      <Modal.Body>
         {isLoading ? (
           <p>Loading...</p>
         ) : (
@@ -121,7 +114,14 @@ const Messages = ({ show, handleClose }) => {
             </div>
             {/* Display current conversation */}
             <div className="col-md-7" style={{ height: "100%" }}>
-              <div>
+              <div
+                style={{
+                  height: "80vh",
+                  overflowY: "scroll",
+                  display: "flex",
+                  flexDirection: "column-reverse",
+                }}
+              >
                 {showMessages?.map((message) => (
                   <div
                     key={message.id}
