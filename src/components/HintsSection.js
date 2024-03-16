@@ -11,9 +11,12 @@ const HintsComponent = ({ quesData }) => {
   const [showMsgForm, setShowMsgForm] = useState(false);
   const [sentMsg, setSentMsg] = useState(false);
   const [currentVideo, setCurrentVideo] = useState(null);
+  const [faq, setFaq] = useState([]);
   const [formData, setFormData] = useState({
     inputMessage: "",
   });
+
+  const faqData = faq.slice(1);
 
   const [errors, setErrors] = useState({});
   const [userId, setUserId] = useState("");
@@ -25,6 +28,7 @@ const HintsComponent = ({ quesData }) => {
   const handleClose = () => setShow(false);
   const handleShow = (video) => {
     setCurrentVideo(video.image);
+    setFaq(video?.faq);
     setErrors({});
     setShowMsgForm(false);
     setSentMsg(false);
@@ -183,7 +187,7 @@ const HintsComponent = ({ quesData }) => {
       <Modal
         show={show}
         onHide={handleClose}
-        size="lg"
+        size="xl"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
@@ -204,12 +208,45 @@ const HintsComponent = ({ quesData }) => {
         ) : (
           <>
             <Modal.Body>
-              <img
-                className="mb-4 rounded img-fluid"
-                src={"/img/" + currentVideo}
-                alt=""
-              />
+              <div className="row">
+                <div className="col-md-4 mx-auto" style={{ height: "100%" }}>
+                  <h4 className="text-center mb-4">FAQ</h4>
+                  <div>
+                    {faqData.map((f, index) => (
+                      <div
+                        key={index}
+                        className="mb-4 w-75 mx-auto"
+                        style={{
+                          backgroundColor: "#9da3a8",
+                          padding: "5px",
+                          border: "1px solid",
+                          borderRadius: "10px",
+                        }}
+                      >
+                        <div>
+                          <p className="text-center">{f?.text}</p>
+                          <img
+                            style={{ border: "1px solid" }}
+                            className="rounded w-50 mx-auto d-block"
+                            src={f?.image}
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="col-md-8">
+                  <img
+                    className="mb-4 rounded img-fluid"
+                    src={"/img/" + currentVideo}
+                    alt=""
+                  />
+                </div>
+              </div>
             </Modal.Body>
+
             <Modal.Footer style={{ display: "grid" }}>
               {showMsgForm ? (
                 <div>
