@@ -5,7 +5,7 @@ import "firebase/compat/auth";
 import LiveChat from "./LiveChat";
 import Messages from "./modals/Messages";
 
-function ProfileButton() {
+function ProfileButton({ updatedData, setUpdatedData }) {
   // modal section
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -66,7 +66,14 @@ function ProfileButton() {
           </button>
         </div>
       </div>
-      {show && <Messages show={show} handleClose={handleClose} />}
+      {show && (
+        <Messages
+          show={show}
+          handleClose={handleClose}
+          updatedData={updatedData}
+          setUpdatedData={setUpdatedData}
+        />
+      )}
     </div>
   );
 }
