@@ -25,17 +25,12 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
     });
   }, []);
 
-  console.log("selected Answer", result?.selectedAnswer);
-
   const alreadySelected =
     Object?.values(result?.selectedAnswer).find(
       (answer) => answer?.userEmail === user?.email
     ) || {};
 
-  console.log("already selected Answer", alreadySelected);
-
   const handleUpdateAnswer = async (answerKey, answer) => {
-    console.log("", answerKey, answer);
     try {
       const questionRef = ref(
         getDatabase(),
