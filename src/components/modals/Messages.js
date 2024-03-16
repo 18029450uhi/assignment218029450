@@ -5,8 +5,9 @@ import { firestore } from "../../services/firebase";
 import SendMessage from "../messages/SendMessage";
 import UserList from "../messages/UserList";
 import moment from "moment";
+import FaqButton from "../messages/FaqButton";
 
-const Messages = ({ show, handleClose }) => {
+const Messages = ({ show, handleClose, updatedData, setUpdatedData }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [userData, setUserData] = useState([]);
   const [messagesData, setMessagesData] = useState([]);
@@ -19,16 +20,16 @@ const Messages = ({ show, handleClose }) => {
     (user) => user?.email === currentUser?.email
   );
 
-  const myMessage = messagesData
-    .filter(
-      (m) =>
-        m?.sender === currentUser?.email || m?.receiver === currentUser?.email
-    )
-    // .reverse();  
+  const myMessage = messagesData.filter(
+    (m) =>
+      m?.sender === currentUser?.email || m?.receiver === currentUser?.email
+  );
+  // .reverse();
 
-  const adminMessage = messagesData
-    .filter((m) => m?.receiver === selectedUser || m?.sender === selectedUser)
-    // .reverse();
+  const adminMessage = messagesData.filter(
+    (m) => m?.receiver === selectedUser || m?.sender === selectedUser
+  );
+  // .reverse();
 
   const showMessages =
     findExistingUser?.role === "admin" ? adminMessage : myMessage;
@@ -116,7 +117,7 @@ const Messages = ({ show, handleClose }) => {
             <div className="col-md-7" style={{ height: "100%" }}>
               <div
                 style={{
-                  height: "80vh",
+                  height: "60vh",
                   overflowY: "scroll",
                   display: "flex",
                   flexDirection: "column-reverse",
@@ -133,7 +134,6 @@ const Messages = ({ show, handleClose }) => {
                     {message?.messageType === "text" && (
                       <div className="mb-4">
                         <p
-                          key={message?.id}
                           className={
                             message?.sender === currentUser?.email
                               ? "bg-primary rounded text-white p-3 "
@@ -156,11 +156,54 @@ const Messages = ({ show, handleClose }) => {
                             padding: "5px",
                             border: "1px solid",
                           }}
-                          key={message.id}
                           className=" rounded w-100 img-fluid"
                           src={message?.img}
                           alt=""
                         />
+                        <span style={{ fontSize: "12px" }}>
+                          {moment(message?.timestamp)?.fromNow()}
+                        </span>
+                      </div>
+                    )}
+
+                    {message.messageType === "both" && (
+                      <div className="mb-4 ">
+                        <div
+                          style={{
+                            backgroundColor:
+                              message?.sender === currentUser?.email
+                                ? "#0e6efd"
+                                : "#9da3a8",
+                            padding: "5px",
+                            border: "1px solid",
+                          }}
+                        >
+                          <p
+                            className={
+                              message?.sender === currentUser?.email
+                                ? "bg-primary rounded text-white p-3 "
+                                : "bg-secondary rounded text-white p-3 "
+                            }
+                          >
+                            {message?.text}
+                          </p>
+                          <img
+                            style={{ border: "1px solid" }}
+                            className=" rounded w-100 img-fluid "
+                            src={message?.img}
+                            alt=""
+                          />
+                          {findExistingUser.role === "admin" &&
+                            message?.receiver !== "admin" && (
+                              <div className="text-center py-2">
+                                <FaqButton
+                                  message={message}
+                                  updatedData={updatedData}
+                                  setUpdatedData={setUpdatedData}
+                                />
+                              </div>
+                            )}
+                        </div>
                         <span style={{ fontSize: "12px" }}>
                           {moment(message?.timestamp)?.fromNow()}
                         </span>
