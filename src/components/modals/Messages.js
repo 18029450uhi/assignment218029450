@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Modal } from "react-bootstrap";
 import firebase from "firebase/compat/app";
 import { firestore } from "../../services/firebase";
 import SendMessage from "../messages/SendMessage";
+import UserList from "../messages/UserList";
+import moment from "moment";
 
 const Messages = ({ show, handleClose }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [userData, setUserData] = useState([]);
   const [messagesData, setMessagesData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [fetchUpdate, setFetchUpdate] = useState(false);
+  const [selectedUser, setSelectedUser] = useState("");
+  const messagesContainerRef = useRef(null);
 
   const findExistingUser = userData.find(
     (user) => user?.email === currentUser?.email
@@ -21,10 +26,19 @@ const Messages = ({ show, handleClose }) => {
     )
     .reverse();
 
+  const adminMessage = messagesData
+    .filter((m) => m?.userRole === "admin" || m?.sender === selectedUser)
+    .reverse();
+
+  const showMessages =
+    findExistingUser?.role === "admin" ? adminMessage : myMessage;
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const usersRef = firestore.collection("users");
+        const usersRef = firestore
+          .collection("users")
+          .orderBy("lastMessageTimestamp", "desc");
         const messagesRef = firestore
           .collection("messages")
           .orderBy("timestamp", "desc");
@@ -46,7 +60,7 @@ const Messages = ({ show, handleClose }) => {
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setIsLoading(false); // Set loading state to false regardless of success or failure
+        setIsLoading(false);
       }
     };
 
@@ -58,7 +72,17 @@ const Messages = ({ show, handleClose }) => {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [fetchUpdate]);
+
+  useEffect(() => {
+    // Scroll to the bottom when messagesData changes
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+      });
+    }
+  }, [messagesData]);
 
   return (
     <Modal
@@ -71,44 +95,61 @@ const Messages = ({ show, handleClose }) => {
       <Modal.Header closeButton>
         <Modal.Title id="example-modal-sizes-title-lg">Chat</Modal.Title>
       </Modal.Header>
-      <Modal.Body  style={{ height: "80vh", overflowY: "scroll" }}>
+      <Modal.Body
+        style={{
+          height: "80vh",
+          overflowY: "scroll",
+          display: "flex",
+          flexDirection: "column-reverse",
+        }}
+      >
         {isLoading ? (
           <p>Loading...</p>
         ) : (
           <div className="row">
             {/* Display messages */}
-            <div className="col-md-5 bg-light ">
-              <h1 className="">Chat History</h1>
-              {userData.map((message) => (
-                <p key={message.id}>{message.text}</p>
-              ))}
+            <div
+              className="col-md-5"
+              style={{ borderRight: "1px solid #9da3a8" }}
+            >
+              <UserList
+                selectedUser={selectedUser}
+                setSelectedUser={setSelectedUser}
+                userData={userData}
+                findExistingUser={findExistingUser}
+              />
             </div>
             {/* Display current conversation */}
-            <div
-              className="col-md-7"
-              style={{ height: "100%", overflow: "auto" }}
-            >
+            <div className="col-md-7" style={{ height: "100%" }}>
               <div>
-                {myMessage?.map((message) => (
-                  <>
-                    <div
-                      className={`w-50 ${
-                        message.sender === currentUser?.email && "ms-auto"
-                      }`}
-                    >
-                      {message.messageType === "text" && (
+                {showMessages?.map((message) => (
+                  <div
+                    key={message.id}
+                    style={{ width: "45%" }}
+                    className={` ${
+                      message.sender === currentUser?.email && "ms-auto"
+                    }`}
+                  >
+                    {message?.messageType === "text" && (
+                      <div className="mb-4">
                         <p
-                          key={message.id}
+                          key={message?.id}
                           className={
-                            message.sender === currentUser?.email
-                              ? "text-end bg-primary rounded text-white p-4"
-                              : "text-start bg-secondary rounded text-white p-4"
+                            message?.sender === currentUser?.email
+                              ? "bg-primary rounded text-white p-3 "
+                              : "bg-secondary rounded text-white p-3 "
                           }
                         >
                           {message?.text}
                         </p>
-                      )}
-                      {message.messageType === "image" && (
+
+                        <span style={{ fontSize: "12px" }}>
+                          {moment(message?.timestamp)?.fromNow()}
+                        </span>
+                      </div>
+                    )}
+                    {message?.messageType === "image" && (
+                      <div className="mb-4">
                         <img
                           style={{
                             backgroundColor: "#0e6efd",
@@ -116,21 +157,32 @@ const Messages = ({ show, handleClose }) => {
                             border: "1px solid",
                           }}
                           key={message.id}
-                          className="mb-4 rounded w-100 img-fluid"
+                          className=" rounded w-100 img-fluid"
                           src={message?.img}
                           alt=""
                         />
-                      )}
-                    </div>
-                  </>
+                        <span style={{ fontSize: "12px" }}>
+                          {moment(message?.timestamp)?.fromNow()}
+                        </span>
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
+              {/* Create a reference for the container */}
+              <div ref={messagesContainerRef}></div>
             </div>
           </div>
         )}
       </Modal.Body>
       <Modal.Footer>
-        <SendMessage currentUser={currentUser} />
+        <SendMessage
+          currentUser={currentUser}
+          setFetchUpdate={setFetchUpdate}
+          fetchUpdate={fetchUpdate}
+          findExistingUser={findExistingUser}
+          selectedUser={selectedUser}
+        />
       </Modal.Footer>
     </Modal>
   );
