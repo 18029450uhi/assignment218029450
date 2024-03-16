@@ -63,6 +63,7 @@ const SendMessage = ({
         // Get the URL of the uploaded image
         const imageUrl = await imageFileRef.getDownloadURL();
         console.log("Image uploaded successfully");
+        setImageFile(null);
         return imageUrl;
       } catch (error) {
         console.error("Error uploading image:", error);
@@ -82,11 +83,13 @@ const SendMessage = ({
         sender: currentUser?.email,
         receiver: isAdmin.role === "admin" ? selectedUser : "admin",
         text: messageText,
-        messageType: imageUrl ? "image" : "text",
+        messageType:
+          imageUrl && messageText ? "both" : imageUrl ? "image" : "text",
         img: imageUrl || "", // Set the image URL or an empty string if it's a text message
         timestamp: new Date().getTime(),
         userId: currentUser.uid,
         userRole: isAdmin.role === "admin" ? "admin" : "user",
+        faqAdded: false,
       };
 
       const chatDocRef = firestore.collection("messages");
@@ -115,16 +118,29 @@ const SendMessage = ({
     setImageFile(file);
   };
 
+  console.log("message test", messageText);
+  console.log("message img", imageFile);
+
   return (
-    <div className="d-flex">
-      <input type="file" accept="image/*" onChange={handleImageChange} />
+    <div
+      className="d-flex align-items-center justify-content-between p-3"
+      style={{ background: "#f8f9fa" }}
+    >
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleImageChange}
+        style={{ marginRight: "10px" }}
+      />
       <input
         disabled={loading}
         type="text"
         value={messageText}
         onChange={(e) => setMessageText(e.target.value)}
+        className="form-control"
+        style={{ flex: "1", marginRight: "10px" }}
       />
-      <Button disabled={loading} onClick={handleSend}>
+      <Button disabled={loading} onClick={handleSend} variant="primary">
         {loading ? "Sending...." : "Send"}
       </Button>
     </div>
