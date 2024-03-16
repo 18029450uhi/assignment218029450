@@ -2,9 +2,18 @@ import React, { useState } from "react";
 import { firestore, storage } from "../../services/firebase";
 import { Button } from "react-bootstrap";
 
-const SendMessage = ({ currentUser }) => {
+const SendMessage = ({
+  currentUser,
+  setFetchUpdate,
+  fetchUpdate,
+  findExistingUser: isAdmin,
+  selectedUser,
+}) => {
   const [messageText, setMessageText] = useState("");
   const [imageFile, setImageFile] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  console.log("currentUser", isAdmin);
 
   const addOrUpdateUser = async () => {
     const newUserForm = {
@@ -23,7 +32,6 @@ const SendMessage = ({ currentUser }) => {
         .get();
 
       if (userSnapshot.empty) {
-        // User doesn't exist, add a new user
         await usersDocRef.add(newUserForm);
       } else {
         // User exists, update the existing user
@@ -67,33 +75,36 @@ const SendMessage = ({ currentUser }) => {
   const addMessage = async () => {
     try {
       console.log("Adding message...");
+
       const imageUrl = await uploadImage();
 
       const newMessage = {
         sender: currentUser?.email,
-        receiver: "admin",
+        receiver: isAdmin.role === "admin" ? selectedUser : "admin",
         text: messageText,
         messageType: imageUrl ? "image" : "text",
         img: imageUrl || "", // Set the image URL or an empty string if it's a text message
         timestamp: new Date().getTime(),
         userId: currentUser.uid,
-        userRole: "user",
+        userRole: isAdmin.role === "admin" ? "admin" : "user",
       };
-
-      
 
       const chatDocRef = firestore.collection("messages");
       await chatDocRef.add(newMessage);
       setMessageText(""); // Clear the input after sending the message
-      setImageFile(null); // Clear the image file after sending
+      setImageFile(null);
+      setFetchUpdate(!fetchUpdate);
+      setLoading(false); // Clear the image file after sending
       console.log("Message added successfully");
     } catch (error) {
+      setLoading(false);
       console.error("Error adding message:", error);
     }
   };
 
   const handleSend = async () => {
     if (currentUser && (messageText.trim() !== "" || imageFile)) {
+      setLoading(true);
       await addOrUpdateUser();
       await addMessage();
     }
@@ -108,11 +119,14 @@ const SendMessage = ({ currentUser }) => {
     <div className="d-flex">
       <input type="file" accept="image/*" onChange={handleImageChange} />
       <input
+        disabled={loading}
         type="text"
         value={messageText}
         onChange={(e) => setMessageText(e.target.value)}
       />
-      <Button onClick={handleSend}>Send</Button>
+      <Button disabled={loading} onClick={handleSend}>
+        {loading ? "Sending...." : "Send"}
+      </Button>
     </div>
   );
 };
