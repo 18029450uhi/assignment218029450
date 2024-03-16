@@ -8,11 +8,11 @@ import "firebase/compat/auth";
 
 //import "firebae/compat/auth";
 import "firebase/compat/storage";
-import { Modal } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 //import "firebase/compat/database"
 //import { QuerySnapshot } from 'firebase/firestore';
 
-function LiveChat({show, handleClose}) {
+function LiveChat({ show, handleClose }) {
   const [text, setText] = useState([]); //message instead of text
   const [userId, setUserId] = useState("");
   // const [newMessage, setNewMessage] = useState('');
@@ -57,197 +57,187 @@ function LiveChat({show, handleClose}) {
     // });
     // getUsers();
   }, []);
-  console.log(localMessages);
+  console.log('message',firestore);
 
   return (
-    <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-      >
-    <div>
-      <div
-        style={{
-          display: "flex",
-          flex: 1,
-          height: "100vh",
-          flexDirection: "column",
-        }}
-      >
+    <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+      <div>
         <div
           style={{
+            display: "flex",
             flex: 1,
-            marginLeft: 24,
-            marginRight: 24,
-            overflow: "auto",
-            marginBottom: 24,
+            height: "40vh",
+            flexDirection: "column",
           }}
         >
-          {localMessages?.map((localMessage) => (
-            <div
-              style={{
-                display: "flex",
-                flex: 1,
-                flexDirection: "column",
-                justifyContent:
-                  userId === localMessage?.uid ? "flex-end" : "flex-start",
-              }}
-            >
-              <div
-                style={{
-                  minHeight: 52,
-                  width: 600,
-                  backgroundColor:
-                    userId === localMessage?.uid
-                      ? "grey"
-                      : localMessage?.like === true
-                      ? "green"
-                      : "blue",
-                  marginTop: 24,
-                  paddingLeft: 24,
-                  paddingRight: 24,
-                  borderRadius: 12,
-                }}
-              >
-                <p>{localMessage.content}</p>
-                {localMessage?.image && localMessage.iamge.length > 0 && (
-                  <img
-                    style={{ width: "100%", height: "auto", marginBottom: 24 }}
-                    src={localMessage.iamge}
-                    alt=""
-                  />
-                )}
-                {userId !== localMessage.uid &&
-                  admin.includes(userId) &&
-                  localMessage.like === false && (
-                    <button
-                      style={{
-                        backgroundColor: "whitesmoke",
-                        color: "black",
-                        fontSize: 22,
-                        marginBottom: 24,
-                        borderWidth: 0,
-                        fontWeight: "bold",
-                        borderRadius: 8,
-                        paddingTop: 4,
-                        paddingBottom: 4,
-                        paddingLeft: 8,
-                        paddingRight: 8,
-                      }}
-                      onClick={async () => {
-                        await firestore
-                          .collection("LiveChat")
-                          .doc(localMessage.mid)
-                          .update({
-                            like: true,
-                          });
-                      }}
-                    >
-                      Add to FAQ
-                    </button>
-                  )}
-              </div>
-            </div>
-          ))}
-        </div>
-        <button
-          style={{
-            backgroundColor: "whitesmoke",
-            color: "white",
-            fontSize: 18,
-            fontWeight: "bold",
-            textAlign: "center",
-            borderWidth: 0,
-          }}
-          onClick={async () => {
-            await firebase
-              .database()
-              .ref(`users/${firebase.auth().currentUser.uid}/online`)
-              .set(false);
-            firebase.auth().signOut();
-          }}
-        >
-          Sign Out
-        </button>
-        <div style={{ display: "flex", flexDirection: "row", marginTop: 244 }}>
-          <form
+          <div
             style={{
-              display: "flex",
-              flexDirection: "row",
               flex: 1,
-            }}
-            onSubmit={async (e) => {
-              e.preventDefault();
-              const timestamp = Date.now();
-              let image = "";
-              const content = text;
-              const uid = userId;
-              const like = false;
-              if (localImage) {
-                const uniqueLocalImage = `${localImage.name_$Math
-                  .random()
-                  .toString(36)}`;
-                const uploadTask = storage
-                  .ref("/images/$(uniqueLocalImage}")
-                  .put(localImage);
-                uploadTask.on(
-                  "state_changed",
-                  () => {},
-                  () => {},
-                  async () => {
-                    const fireBaseUrl = await storage
-                      .ref("images")
-                      .child(uniqueLocalImage)
-                      .getDownloadURL();
-                    const message = {
-                      content,
-                      timestamp,
-                      uid,
-                      image: fireBaseUrl,
-                      like,
-                    };
-                    const docRef = await firestore
-                      .collection("Chats")
-                      .add(message);
-                    console.log(docRef);
-                  }
-                );
-              } else {
-                const message = { content, timestamp, uid, image, like };
-                const docRef = await firestore.collection("Chats").add(message);
-                console.log(docRef);
-              }
-              setText("");
-              setLocalImage(null);
+              marginLeft: 24,
+              marginRight: 24,
+              overflow: "auto",
+              marginBottom: 24,
             }}
           >
-            <input
-              key={Date.now()}
-              style={{ flex: 1 }}
-              type="file"
-              onChange={(e) => {
-                const image = e.target.files[0];
-                console.log(image);
-                setLocalImage(image);
-              }}
-            />
-            <button
-              type="submit"
+            {localMessages?.map((localMessage) => (
+              <div
+                style={{
+                  display: "flex",
+                  flex: 1,
+                  flexDirection: "column",
+                  justifyContent:
+                    userId === localMessage?.uid ? "flex-end" : "flex-start",
+                }}
+              >
+                <div
+                  style={{
+                    minHeight: 52,
+                    width: 600,
+                    backgroundColor:
+                      userId === localMessage?.uid
+                        ? "grey"
+                        : localMessage?.like === true
+                        ? "green"
+                        : "blue",
+                    marginTop: 24,
+                    paddingLeft: 24,
+                    paddingRight: 24,
+                    borderRadius: 12,
+                  }}
+                >
+                  <p>{localMessage.content}</p>
+                  {localMessage?.image && localMessage.iamge.length > 0 && (
+                    <img
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        marginBottom: 24,
+                      }}
+                      src={localMessage.iamge}
+                      alt=""
+                    />
+                  )}
+                  {userId !== localMessage.uid &&
+                    admin.includes(userId) &&
+                    localMessage.like === false && (
+                      <button
+                        style={{
+                          backgroundColor: "whitesmoke",
+                          color: "black",
+                          fontSize: 22,
+                          marginBottom: 24,
+                          borderWidth: 0,
+                          fontWeight: "bold",
+                          borderRadius: 8,
+                          paddingTop: 4,
+                          paddingBottom: 4,
+                          paddingLeft: 8,
+                          paddingRight: 8,
+                        }}
+                        onClick={async () => {
+                          await firestore
+                            .collection("LiveChat")
+                            .doc(localMessage.mid)
+                            .update({
+                              like: true,
+                            });
+                        }}
+                      >
+                        Add to FAQ
+                      </button>
+                    )}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div
+            style={{ display: "flex", flexDirection: "row", marginTop: 244 }}
+          >
+            <form
               style={{
+                display: "flex",
+                flexDirection: "row",
                 flex: 1,
-                backgroundColor: "blanchedalmond",
-                color: "white",
-                fontWeight: "bold",
-                borderWidth: 0,
+              }}
+              onSubmit={async (e) => {
+                e.preventDefault();
+                const timestamp = Date.now();
+                let image = "";
+                const content = text;
+                const uid = userId;
+                const like = false;
+                if (localImage) {
+                  const uniqueLocalImage = `${localImage.name_$Math
+                    .random()
+                    .toString(36)}`;
+                  const uploadTask = storage
+                    .ref("/images/$(uniqueLocalImage}")
+                    .put(localImage);
+                  uploadTask.on(
+                    "state_changed",
+                    () => {},
+                    () => {},
+                    async () => {
+                      const fireBaseUrl = await storage
+                        .ref("images")
+                        .child(uniqueLocalImage)
+                        .getDownloadURL();
+                      const message = {
+                        content,
+                        timestamp,
+                        uid,
+                        image: fireBaseUrl,
+                        like,
+                      };
+                      const docRef = await firestore
+                        .collection("Chats")
+                        .add(message);
+                      console.log(docRef);
+                    }
+                  );
+                } else {
+                  const message = { content, timestamp, uid, image, like };
+                  const docRef = await firestore
+                    .collection("Chats")
+                    .add(message);
+                  console.log(docRef);
+                }
+                setText("");
+                setLocalImage(null);
               }}
             >
-              Send
-            </button>
-          </form>
+              <input
+                key={Date.now()}
+                style={{ flex: 1 }}
+                type="file"
+                onChange={(e) => {
+                  const image = e.target.files[0];
+                  console.log(image);
+                  setLocalImage(image);
+                }}
+              />
+              <button
+                type="submit"
+                style={{
+                  flex: 1,
+                  backgroundColor: "blanchedalmond",
+                  color: "white",
+                  fontWeight: "bold",
+                  borderWidth: 0,
+                }}
+              >
+                Send
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+      </Modal.Footer>
     </Modal>
   );
 }
