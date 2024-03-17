@@ -67,14 +67,15 @@
 }
 
 .selected {
+  background-color: #187292 !important;
+}
+.correct {
   background-color: green !important;
 }
 
-p{
+p {
   margin: 0px;
 }
-
-
 
 @media (max-width: 768px) {
   .GeneralHints,
@@ -82,4 +83,3 @@ p{
     width: 100%;
   }
 }
-
