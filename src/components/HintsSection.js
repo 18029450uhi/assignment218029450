@@ -11,6 +11,7 @@ const HintsComponent = ({ quesData }) => {
   const [showMsgForm, setShowMsgForm] = useState(false);
   const [sentMsg, setSentMsg] = useState(false);
   const [currentVideo, setCurrentVideo] = useState(null);
+  const [youtbeVideo, setYoutubeVideo] = useState(null);
   const [faq, setFaq] = useState([]);
   const [formData, setFormData] = useState({
     inputMessage: "",
@@ -28,6 +29,7 @@ const HintsComponent = ({ quesData }) => {
   const handleClose = () => setShow(false);
   const handleShow = (video) => {
     setCurrentVideo(video.image);
+    setYoutubeVideo(video?.video);
     setFaq(video?.faq);
     setErrors({});
     setShowMsgForm(false);
@@ -150,156 +152,165 @@ const HintsComponent = ({ quesData }) => {
   };
 
   return (
-    <div
-      className="row col-sm-6"
-      style={{ margin: "0 auto", background: "#f5f5f5" }}
-    >
+    <div className="row col-sm-6">
       <h2 className="text-center"> Hints</h2>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          marginBottom: "1.5rem",
-        }}
-      >
-        {data?.titleColumn.map((column, index) => {
-          if (index === 0) {
-            return <div key={index} className="col-sm-2 d-grid gap-2"></div>;
-          }
-          return (
-            <div
-              className="col-sm-5 d-grid gap-2"
-              key={column.linkTitle}
-              style={{ textAlign: "center" }}
-            >
-              <h5
-                style={{
-                  color: column.linkTitle === "general" ? "#2596be" : "#198754",
-                }}
+      <div className="p-4" style={{ margin: "0 auto", background: "#f5f5f5" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginBottom: "1.5rem",
+          }}
+        >
+          {data?.titleColumn.map((column, index) => {
+            if (index === 0) {
+              return <div key={index} className="col-sm-2 d-grid gap-2"></div>;
+            }
+            return (
+              <div
+                className="col-sm-5 d-grid gap-2"
+                key={column.linkTitle}
+                style={{ textAlign: "center" }}
               >
-                {column.columnTitle}
-              </h5>
-            </div>
-          );
-        })}
-      </div>
-      {renderSections()}
-      <Modal
-        show={show}
-        onHide={handleClose}
-        size="xl"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton></Modal.Header>
-        {sentMsg ? (
-          <>
-            <Modal.Body>
-              <p className="text-center">
-                Your message was sent, and you will get a reply within 3 days
-              </p>
-            </Modal.Body>
-            <Modal.Footer style={{ display: "block" }}>
-              <Button variant="primary" className="me-3" size="sm">
-                Sent
-              </Button>
-            </Modal.Footer>
-          </>
-        ) : (
-          <>
-            <Modal.Body>
-              <div className="row">
-                <div className="col-md-4 mx-auto" style={{ height: "100%" }}>
-                  <h4 className="text-center mb-4">FAQ</h4>
-                  <div>
-                    {faqData.map((f, index) => (
-                      <div
-                        key={index}
-                        className="mb-4 w-75 mx-auto"
-                        style={{
-                          backgroundColor: "#9da3a8",
-                          padding: "5px",
-                          border: "1px solid",
-                          borderRadius: "10px",
-                        }}
-                      >
-                        <div>
-                          <p className="text-center">{f?.text}</p>
-                          <img
-                            style={{ border: "1px solid" }}
-                            className="rounded w-50 mx-auto d-block"
-                            src={f?.image}
-                            alt=""
-                          />
+                <h5
+                  style={{
+                    color:
+                      column.linkTitle === "general" ? "#2596be" : "#198754",
+                  }}
+                >
+                  {column.columnTitle}
+                </h5>
+              </div>
+            );
+          })}
+        </div>
+        {renderSections()}
+        <Modal
+          show={show}
+          onHide={handleClose}
+          size="xl"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Header closeButton></Modal.Header>
+          {sentMsg ? (
+            <>
+              <Modal.Body>
+                <p className="text-center">
+                  Your message was sent, and you will get a reply within 3 days
+                </p>
+              </Modal.Body>
+              <Modal.Footer style={{ display: "block" }}>
+                <Button variant="primary" className="me-3" size="sm">
+                  Sent
+                </Button>
+              </Modal.Footer>
+            </>
+          ) : (
+            <>
+              <Modal.Body>
+                <div className="row">
+                  <div className="col-md-4 mx-auto" style={{ height: "100%" }}>
+                    <h4 className="text-center mb-4">FAQ</h4>
+                    <div>
+                      {faqData.map((f, index) => (
+                        <div
+                          key={index}
+                          className="mb-4 w-75 mx-auto"
+                          style={{
+                            backgroundColor: "#9da3a8",
+                            padding: "5px",
+                            border: "1px solid",
+                            borderRadius: "10px",
+                          }}
+                        >
+                          <div>
+                            <p className="text-center">{f?.text}</p>
+                            <img
+                              style={{ border: "1px solid" }}
+                              className="rounded w-50 mx-auto d-block"
+                              src={f?.image}
+                              alt=""
+                            />
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="col-md-8">
+                    {youtbeVideo ? (
+                      <iframe
+                        className="w-100"
+                        height={500}
+                        src={youtbeVideo}
+                        title="d"
+                      />
+                    ) : (
+                      <img
+                        className="mb-4 rounded img-fluid"
+                        src={"/img/" + currentVideo}
+                        alt=""
+                      />
+                    )}
                   </div>
                 </div>
+              </Modal.Body>
 
-                <div className="col-md-8">
-                  <img
-                    className="mb-4 rounded img-fluid"
-                    src={"/img/" + currentVideo}
-                    alt=""
-                  />
-                </div>
-              </div>
-            </Modal.Body>
-
-            <Modal.Footer style={{ display: "grid" }}>
-              {showMsgForm ? (
-                <div>
-                  <p>What have you found confusing about this video?</p>
-                  <form onSubmit={handleSubmit}>
-                    <div>
-                      <textarea
-                        name="inputMessage"
-                        value={formData.inputMessage}
-                        onChange={handleInputChange}
-                        rows={3}
-                        cols={100}
-                        placeholder="This is where the messages goes."
-                      />
-                      {errors.inputMessage && (
-                        <span className="text-danger">
-                          {errors.inputMessage}
-                        </span>
-                      )}
-                    </div>
-                    <Button
-                      variant="primary"
-                      className="me-3"
-                      size="sm"
-                      type="submit"
-                    >
-                      Send
-                    </Button>
-                    <Button
-                      variant="outline-primary"
-                      size="sm"
-                      onClick={() => {
-                        setShowMsgForm(false);
-                        setErrors({});
-                      }}
-                    >
-                      Cancel
-                    </Button>
-                  </form>
-                </div>
-              ) : (
-                <Button
-                  variant="danger"
-                  size="sm"
-                  onClick={() => setShowMsgForm(true)}
-                >
-                  Confused
-                </Button>
-              )}
-            </Modal.Footer>
-          </>
-        )}
-      </Modal>
+              <Modal.Footer style={{ display: "grid" }}>
+                {showMsgForm ? (
+                  <div>
+                    <p>What have you found confusing about this video?</p>
+                    <form onSubmit={handleSubmit}>
+                      <div>
+                        <textarea
+                          name="inputMessage"
+                          value={formData.inputMessage}
+                          onChange={handleInputChange}
+                          rows={3}
+                          cols={100}
+                          placeholder="This is where the messages goes."
+                        />
+                        {errors.inputMessage && (
+                          <span className="text-danger">
+                            {errors.inputMessage}
+                          </span>
+                        )}
+                      </div>
+                      <Button
+                        variant="primary"
+                        className="me-3"
+                        size="sm"
+                        type="submit"
+                      >
+                        Send
+                      </Button>
+                      <Button
+                        variant="outline-primary"
+                        size="sm"
+                        onClick={() => {
+                          setShowMsgForm(false);
+                          setErrors({});
+                        }}
+                      >
+                        Cancel
+                      </Button>
+                    </form>
+                  </div>
+                ) : (
+                  <Button
+                    variant="danger"
+                    size="sm"
+                    onClick={() => setShowMsgForm(true)}
+                  >
+                    Confused
+                  </Button>
+                )}
+              </Modal.Footer>
+            </>
+          )}
+        </Modal>
+      </div>
     </div>
   );
 };
