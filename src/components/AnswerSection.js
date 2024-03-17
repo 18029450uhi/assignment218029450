@@ -167,13 +167,13 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
                 className="btn btn-primary mb-2 p-4 m-4"
                 onClick={() => setCheckAnswer(!checkAnswer)}
               >
-                {questions?.answer1}
+                Check Correct Answer
               </button>
               <button
                 className="btn btn-primary mb-2 p-4 m-4"
                 onClick={() => setShowPercentage(!showPercentage)}
               >
-                check percentage
+                Check Percentage
               </button>
             </div>
           </div>
