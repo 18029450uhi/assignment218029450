@@ -12,24 +12,49 @@ const HintsComponent = ({ quesData }) => {
   const [sentMsg, setSentMsg] = useState(false);
   const [currentVideo, setCurrentVideo] = useState(null);
   const [youtbeVideo, setYoutubeVideo] = useState(null);
+  const [linkType, setLinkType] = useState(null);
   const [faq, setFaq] = useState([]);
   const [formData, setFormData] = useState({
     inputMessage: "",
   });
+  const [errors, setErrors] = useState({});
+  const [currentUser, setCurrentUser] = useState("");
+  const [users, setUsers] = useState([]);
 
+  const findExistingUser = users.find(
+    (user) => user?.email === currentUser?.email
+  );
+
+  console.log("existing user", findExistingUser);
   const faqData = faq.slice(1);
 
-  const [errors, setErrors] = useState({});
-  const [userId, setUserId] = useState("");
+  useEffect(() => {
+    setCurrentUser(firebase.auth()?.currentUser);
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const usersRef = firestore.collection("users");
+      const usersSnapShot = await usersRef.get();
+      const newUserData = usersSnapShot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setUsers(newUserData);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   useEffect(() => {
-    setUserId(firebase.auth()?.currentUser?.uid);
+    fetchData();
   }, []);
 
   const handleClose = () => setShow(false);
   const handleShow = (video) => {
     setCurrentVideo(video.image);
     setYoutubeVideo(video?.video);
+    setLinkType(video?.type + " " + video?.link);
     setFaq(video?.faq);
     setErrors({});
     setShowMsgForm(false);
@@ -50,13 +75,34 @@ const HintsComponent = ({ quesData }) => {
 
     setErrors(validationErrors);
 
+    const message = {
+      videoTitle: linkType,
+      sender: currentUser?.email,
+      receiver: "admin",
+      text: formData?.inputMessage,
+      messageType: "text",
+      img: "", // Set the image URL or an empty string if it's a text message
+      timestamp: new Date().getTime(),
+      userId: currentUser.uid,
+      userRole: "user",
+      faqAdded: false,
+    };
+
+    const newUserForm = {
+      email: currentUser?.email,
+      uid: currentUser?.uid,
+      displayName: currentUser?.displayName,
+      photoURL: currentUser?.photoURL,
+      role: "user",
+      lastMessageTimestamp: new Date().getTime(),
+    };
+
     if (Object.keys(validationErrors).length === 0) {
-      let content = formData.inputMessage;
-      let timestamp = Date.now();
-      let image = "";
-      let like = true;
-      const message = { content, timestamp, userId, image, like };
-      firestore.collection("Chats").add(message);
+      firestore.collection("messages").add(message);
+      if (!findExistingUser) {
+        firestore.collection("users").add(newUserForm);
+      }
+
       setSentMsg(true);
       setFormData({
         inputMessage: "",
@@ -298,13 +344,17 @@ const HintsComponent = ({ quesData }) => {
                     </form>
                   </div>
                 ) : (
-                  <Button
-                    variant="danger"
-                    size="sm"
-                    onClick={() => setShowMsgForm(true)}
-                  >
-                    Confused
-                  </Button>
+                  <>
+                    {findExistingUser?.role !== "admin" && (
+                      <Button
+                        variant="danger"
+                        size="sm"
+                        onClick={() => setShowMsgForm(true)}
+                      >
+                        Confused
+                      </Button>
+                    )}
+                  </>
                 )}
               </Modal.Footer>
             </>
