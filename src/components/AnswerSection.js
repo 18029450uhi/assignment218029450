@@ -7,6 +7,10 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
   const questions = quesData?.questions?.fullquestion;
   const result = questions?.result || {};
   const ansList = result?.answerList;
+  const [showPercentage, setShowPercentage] = useState(false);
+  const [checkAnswer, setCheckAnswer] = useState(false);
+
+  const ans = quesData?.questions?.fullquestion?.correct;
 
   const values = result?.answerList ? Object?.values(result?.answerList) : [];
   const sum = values.reduce((acc, value) => acc + value, 0);
@@ -55,6 +59,8 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
     }
   };
 
+  console.log("q", quesData);
+
   return (
     <div className="col-12">
       <h3 className="text-center">Answer</h3>
@@ -69,10 +75,12 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
               type="button"
               className={`btn btn-secondary mb-2 p-4 ${
                 alreadySelected?.answer === "answer0" && "selected"
-              }`}
+              } ${
+                checkAnswer && questions?.answer0[0] === ans ? "correct" : ""
+              } `}
             >
               <span> {questions?.answer0}</span>{" "}
-              {alreadySelected?.userEmail && (
+              {showPercentage && (
                 <span className="fw-bold ml-25">({calculateOption0})</span>
               )}
             </button>
@@ -84,10 +92,12 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
               type="button"
               className={`btn btn-secondary mb-2 p-4 ${
                 alreadySelected?.answer === "answer3" && "selected"
-              }`}
+              } ${
+                checkAnswer && questions?.answer3[0] === ans ? "correct" : ""
+              } `}
             >
               <span> {questions?.answer3}</span>{" "}
-              {alreadySelected?.userEmail && (
+              {showPercentage && (
                 <span className="fw-bold ml-25">({calculateOption3})</span>
               )}
             </button>
@@ -98,13 +108,15 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
               type="button"
               className={`btn btn-secondary mb-2 p-4 ${
                 alreadySelected?.answer === "answer2" && "selected"
+              } ${
+                checkAnswer && questions?.answer2[0] === ans ? "correct" : ""
               }`}
               onClick={() =>
                 handleUpdateAnswer("answer2", questions?.answer2[0])
               }
             >
               <span> {questions?.answer2}</span>
-              {alreadySelected?.userEmail && (
+              {showPercentage && (
                 <span className="fw-bold ml-25">({calculateOption2})</span>
               )}
             </button>
@@ -113,13 +125,15 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
               type="button"
               className={`btn btn-secondary mb-2 p-4 ${
                 alreadySelected?.answer === "answer4" && "selected"
+              } ${
+                checkAnswer && questions?.answer4[0] === ans ? "correct" : ""
               }`}
               onClick={() =>
                 handleUpdateAnswer("answer4", questions?.answer4[0])
               }
             >
               <span> {questions?.answer4}</span>{" "}
-              {alreadySelected?.userEmail && (
+              {showPercentage && (
                 <span className="fw-bold ml-25">({calculateOption4})</span>
               )}
             </button>
@@ -132,21 +146,34 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
               type="button"
               className={`btn btn-secondary mb-2 p-4 ${
                 alreadySelected?.answer === "answer5" && "selected"
+              } ${
+                checkAnswer && questions?.answer5[0] === ans ? "correct" : ""
               }`}
               onClick={() =>
                 handleUpdateAnswer("answer5", questions?.answer5[0])
               }
             >
               <span> {questions?.answer5}</span>{" "}
-              {alreadySelected?.userEmail && (
+              {showPercentage && (
                 <span className="fw-bold ml-25">({calculateOption5})</span>
               )}
             </button>
           </div>
           <div className="row">
             <div className="col-sm text-center">
-              <button type="button" className="btn btn-primary mb-2 p-4">
+              <button
+                disabled={!alreadySelected?.userEmail}
+                type="button"
+                className="btn btn-primary mb-2 p-4 m-4"
+                onClick={() => setCheckAnswer(!checkAnswer)}
+              >
                 {questions?.answer1}
+              </button>
+              <button
+                className="btn btn-primary mb-2 p-4 m-4"
+                onClick={() => setShowPercentage(!showPercentage)}
+              >
+                check percentage
               </button>
             </div>
           </div>
