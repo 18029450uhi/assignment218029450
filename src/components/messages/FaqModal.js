@@ -50,7 +50,7 @@ const FaqModal = ({
             <div className="col-md-4 ">
               <div
                 className="p-3 m-2 rounded"
-                style={{ background: "#9da3a8 " }}
+                style={{ background: "#9da3a8", cursor:'pointer' }}
                 onClick={() => handleUpdateFAQ(video, index)}
               >
                 <p>
