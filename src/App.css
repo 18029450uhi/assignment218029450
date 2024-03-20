@@ -67,31 +67,13 @@
 }
 
 .selected {
-  background-color: #187292 !important;
-}
-.correct {
   background-color: green !important;
 }
 
-p {
+p{
   margin: 0px;
 }
 
-input[type="file"]::file-selector-button {
-  /* margin-right: 20px; */
-
-  border: none;
-  background: #084cdf;
-  padding: 10px 20px;
-  border-radius: 10px;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.2s ease-in-out;
-}
-
-input[type="file"]::file-selector-button:hover {
-  background: #0d45a5;
-}
 
 
 @media (max-width: 768px) {
@@ -100,3 +82,4 @@ input[type="file"]::file-selector-button:hover {
     width: 100%;
   }
 }
+
