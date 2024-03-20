@@ -38,19 +38,26 @@ function ProfileButton({ updatedData, setUpdatedData }) {
 
   return (
     <div>
-      <div className="dropdown">
-        <button
-          className="btn btn-secondary dropdown-toggle"
-          type="button"
-          id="profileDropdown"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-          onClick={handleProfileClick}
-          style={{ marginRight: "5px" }}
-        >
-          {userInitial}
-        </button>
+      <div className="d-flex">
+        {/* <button
+        // className="btn btn-secondary dropdown-toggle"
+        // type="button"
+        // id="profileDropdown"
+        // data-toggle="dropdown"
+        // aria-haspopup="true"
+        // aria-expanded="false"
+
+        // style={{ marginRight: "5px" }}
+        ></button> */}
+
+        <div className="" onClick={handleProfileClick}>
+          <img
+            className="w-50 rounded-circle cursor-pointer"
+            style={{ border: "2px solid", cursor: "pointer" }}
+            src={user?.photoURL}
+            alt=""
+          />
+        </div>
 
         <button onClick={handleLogout} className="btn btn-secondary">
           Sign Out
