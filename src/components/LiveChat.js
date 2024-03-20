@@ -18,13 +18,13 @@ function LiveChat({ show, handleClose }) {
   const storage = firebase.storage();
   const messagesRef = firestore.collection("messages");
 
-  console.log("chat", messagesRef);
+
 
   useEffect(() => {
     setUserId(firebase.auth()?.currentUser?.uid);
     setLocalMessages([]);
   }, []);
-  console.log("message", firestore);
+  
 
   return (
     <Modal
@@ -166,7 +166,7 @@ function LiveChat({ show, handleClose }) {
                       const docRef = await firestore
                         .collection("Chats")
                         .add(message);
-                      console.log(docRef);
+                     
                     }
                   );
                 } else {
@@ -174,7 +174,7 @@ function LiveChat({ show, handleClose }) {
                   const docRef = await firestore
                     .collection("Chats")
                     .add(message);
-                  console.log(docRef);
+                 
                 }
                 setText("");
                 setLocalImage(null);
@@ -185,7 +185,7 @@ function LiveChat({ show, handleClose }) {
                 type="file"
                 onChange={(e) => {
                   const image = e.target.files[0];
-                  console.log(image);
+                
                   setLocalImage(image);
                 }}
               />
