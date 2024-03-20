@@ -133,23 +133,15 @@ const Messages = ({ show, handleClose, updatedData, setUpdatedData }) => {
                   >
                     {message?.messageType === "text" && (
                       <div className="mb-4">
-                        <div
+                        <p
                           className={
                             message?.sender === currentUser?.email
                               ? "bg-primary rounded text-white p-3 "
                               : "bg-secondary rounded text-white p-3 "
                           }
                         >
-                          {message?.videoTitle && (
-                            <span className=" bg-warning text-dark p-1 px-3 rounded">
-                              {message?.videoTitle}
-                            </span>
-                          )}
-                          <p className={`${message?.videoTitle && "mt-1"}`}>
-                            {" "}
-                            {message?.text}
-                          </p>
-                        </div>
+                          {message?.text}
+                        </p>
 
                         <span style={{ fontSize: "12px" }}>
                           {moment(message?.timestamp)?.fromNow()}
@@ -226,7 +218,7 @@ const Messages = ({ show, handleClose, updatedData, setUpdatedData }) => {
           </div>
         )}
       </Modal.Body>
-      <Modal.Footer style={{ background: "#f8f9fa" }}>
+      <Modal.Footer>
         <SendMessage
           currentUser={currentUser}
           setFetchUpdate={setFetchUpdate}
