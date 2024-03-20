@@ -48,12 +48,12 @@ const Messages = ({ show, handleClose, updatedData, setUpdatedData }) => {
 
         const newUserData = usersSnapShot.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data(),
+          ...doc.data()
         }));
 
         const newMessagesData = messageSnapShot.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data(),
+          ...doc.data()
         }));
 
         setUserData(newUserData);
@@ -80,7 +80,7 @@ const Messages = ({ show, handleClose, updatedData, setUpdatedData }) => {
     if (messagesContainerRef.current) {
       messagesContainerRef.current.scrollIntoView({
         behavior: "smooth",
-        block: "end",
+        block: "end"
       });
     }
   }, [messagesData]);
@@ -120,7 +120,7 @@ const Messages = ({ show, handleClose, updatedData, setUpdatedData }) => {
                   height: "60vh",
                   overflowY: "scroll",
                   display: "flex",
-                  flexDirection: "column-reverse",
+                  flexDirection: "column-reverse"
                 }}
               >
                 {showMessages?.map((message) => (
@@ -149,6 +149,16 @@ const Messages = ({ show, handleClose, updatedData, setUpdatedData }) => {
                             {" "}
                             {message?.text}
                           </p>
+                          {findExistingUser.role === "admin" &&
+                            message?.receiver !== "admin" && (
+                              <div className="text-center py-2">
+                                <FaqButton
+                                  message={message}
+                                  updatedData={updatedData}
+                                  setUpdatedData={setUpdatedData}
+                                />
+                              </div>
+                            )}
                         </div>
 
                         <span style={{ fontSize: "12px" }}>
@@ -158,16 +168,29 @@ const Messages = ({ show, handleClose, updatedData, setUpdatedData }) => {
                     )}
                     {message?.messageType === "image" && (
                       <div className="mb-4">
-                        <img
+                        <div
                           style={{
                             backgroundColor: "#0e6efd",
                             padding: "5px",
-                            border: "1px solid",
+                            border: "1px solid"
                           }}
-                          className=" rounded w-100 img-fluid"
-                          src={message?.img}
-                          alt=""
-                        />
+                        >
+                          <img
+                            className=" rounded w-100 img-fluid"
+                            src={message?.img}
+                            alt=""
+                          />
+                          {findExistingUser.role === "admin" &&
+                            message?.receiver !== "admin" && (
+                              <div className="text-center py-2">
+                                <FaqButton
+                                  message={message}
+                                  updatedData={updatedData}
+                                  setUpdatedData={setUpdatedData}
+                                />
+                              </div>
+                            )}
+                        </div>
                         <span style={{ fontSize: "12px" }}>
                           {moment(message?.timestamp)?.fromNow()}
                         </span>
@@ -183,7 +206,7 @@ const Messages = ({ show, handleClose, updatedData, setUpdatedData }) => {
                                 ? "#0e6efd"
                                 : "#9da3a8",
                             padding: "5px",
-                            border: "1px solid",
+                            border: "1px solid"
                           }}
                         >
                           <p
