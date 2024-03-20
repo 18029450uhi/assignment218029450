@@ -12,7 +12,7 @@ const FaqButton = ({ message, updatedData, setUpdatedData }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  console.log("message", message);
+
 
   const fetchData = async () => {
     try {
