@@ -13,7 +13,7 @@ const SendMessage = ({
   const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  console.log("currentUser", isAdmin);
+
 
   const addOrUpdateUser = async () => {
     const newUserForm = {
@@ -48,12 +48,12 @@ const SendMessage = ({
   const uploadImage = async () => {
     if (imageFile) {
       try {
-        console.log("Uploading image...");
+     
         const storageRef = storage.ref();
         const imageFileName = `${currentUser.uid}_${new Date().getTime()}_${
           imageFile.name
         }`;
-        console.log("testing...");
+    
         const imageFileRef = storageRef.child(imageFileName);
 
         // Upload the image to Firebase Storage
@@ -62,7 +62,7 @@ const SendMessage = ({
 
         // Get the URL of the uploaded image
         const imageUrl = await imageFileRef.getDownloadURL();
-        console.log("Image uploaded successfully");
+        
         setImageFile(null);
         return imageUrl;
       } catch (error) {
@@ -75,7 +75,7 @@ const SendMessage = ({
 
   const addMessage = async () => {
     try {
-      console.log("Adding message...");
+     
 
       const imageUrl = await uploadImage();
 
@@ -98,7 +98,7 @@ const SendMessage = ({
       setImageFile(null);
       setFetchUpdate(!fetchUpdate);
       setLoading(false); // Clear the image file after sending
-      console.log("Message added successfully");
+      
     } catch (error) {
       setLoading(false);
       console.error("Error adding message:", error);
