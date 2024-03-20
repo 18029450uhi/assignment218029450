@@ -24,12 +24,10 @@ const Messages = ({ show, handleClose, updatedData, setUpdatedData }) => {
     (m) =>
       m?.sender === currentUser?.email || m?.receiver === currentUser?.email
   );
-  // .reverse();
 
   const adminMessage = messagesData.filter(
     (m) => m?.receiver === selectedUser || m?.sender === selectedUser
   );
-  // .reverse();
 
   const showMessages =
     findExistingUser?.role === "admin" ? adminMessage : myMessage;
