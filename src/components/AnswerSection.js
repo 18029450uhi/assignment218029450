@@ -53,13 +53,13 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
         ],
       });
       setUpdatedData(!updatedData);
-      console.log("Answer updated successfully!");
+  
     } catch (error) {
       console.error("Error updating answer:", error);
     }
   };
 
-  console.log("q", quesData);
+
 
   return (
     <div className="col-12">
