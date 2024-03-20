@@ -25,7 +25,7 @@ const HintsComponent = ({ quesData }) => {
     (user) => user?.email === currentUser?.email
   );
 
-  console.log("existing user", findExistingUser);
+
   const faqData = faq.slice(1);
 
   useEffect(() => {
