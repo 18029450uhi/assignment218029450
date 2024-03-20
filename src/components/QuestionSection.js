@@ -8,7 +8,7 @@ function QuestionSection({ quesData }) {
 
   return (
     <div className="col-sm-6">
-      <h3 className="text-center mb-3">{title}</h3>
+      <h3 className="text-center">{title}</h3>
       <div className="p-3 mb-2 bg-light">
         <div className="text-center">
           <img className="mb-4 rounded w-100 img-fluid" src={imageUri} alt="" />
