@@ -118,29 +118,24 @@ const SendMessage = ({
     setImageFile(file);
   };
 
-  console.log("message test", messageText);
-  console.log("message img", imageFile);
-
   return (
-    <div
-      className="d-flex align-items-center justify-content-between p-3"
-      style={{ background: "#f8f9fa" }}
-    >
+    <div className="d-flex align-items-center justify-content-between p-3">
       <input
         type="file"
         accept="image/*"
         onChange={handleImageChange}
-        style={{ marginRight: "10px" }}
+        style={{ marginRight: "10px", width: "200px" }}
       />
+
       <input
         disabled={loading}
         type="text"
         value={messageText}
         onChange={(e) => setMessageText(e.target.value)}
         className="form-control"
-        style={{ flex: "1", marginRight: "10px" }}
+        style={{ flex: "1", marginRight: "10px", width: "300px" }}
       />
-      <Button disabled={loading} onClick={handleSend} variant="primary">
+      <Button disabled={loading} onClick={handleSend} variant="success">
         {loading ? "Sending...." : "Send"}
       </Button>
     </div>
