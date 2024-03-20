@@ -45,21 +45,18 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
       await update(questionRef, {
         answerList: {
           ...result?.answerList,
-          [answerKey]: (result?.answerList?.[answerKey] || 0) + 1,
+          [answerKey]: (result?.answerList?.[answerKey] || 0) + 1
         },
         selectedAnswer: [
           ...result?.selectedAnswer,
-          { userEmail: user.email, answer: answerKey },
-        ],
+          { userEmail: user.email, answer: answerKey }
+        ]
       });
       setUpdatedData(!updatedData);
-  
     } catch (error) {
       console.error("Error updating answer:", error);
     }
   };
-
-
 
   return (
     <div className="col-12">
@@ -73,7 +70,7 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
                 handleUpdateAnswer("answer0", questions?.answer0[0])
               }
               type="button"
-              className={`btn btn-secondary mb-2 p-4 ${
+              className={`btn btn-secondary mb-2 p-4 position-relative ${
                 alreadySelected?.answer === "answer0" && "selected"
               } ${
                 checkAnswer && questions?.answer0[0] === ans ? "correct" : ""
@@ -81,7 +78,9 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
             >
               <span> {questions?.answer0}</span>{" "}
               {showPercentage && (
-                <span className="fw-bold ml-25 bg-light text-dark py-3 px-2 rounded">{calculateOption0}</span>
+                <span className="fw-bold ml-25 bg-light text-dark py-3 px-2 rounded"  style={{ position: "absolute", right: 7, top: 7 }}>
+                  {calculateOption0}
+                </span>
               )}
             </button>
             <button
@@ -90,7 +89,7 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
                 handleUpdateAnswer("answer3", questions?.answer3[0])
               }
               type="button"
-              className={`btn btn-secondary mb-2 p-4 ${
+              className={`btn btn-secondary mb-2 p-4 position-relative ${
                 alreadySelected?.answer === "answer3" && "selected"
               } ${
                 checkAnswer && questions?.answer3[0] === ans ? "correct" : ""
@@ -98,7 +97,12 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
             >
               <span> {questions?.answer3}</span>{" "}
               {showPercentage && (
-                <span className="fw-bold ml-25 bg-light text-dark py-3 px-2 rounded">{calculateOption3}</span>
+                <span
+                  className="fw-bold ml-25 bg-light text-dark py-3 px-2 rounded "
+                  style={{ position: "absolute", right: 7, top: 7 }}
+                >
+                  {calculateOption3}
+                </span>
               )}
             </button>
           </div>
@@ -106,7 +110,7 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
             <button
               disabled={alreadySelected?.userEmail}
               type="button"
-              className={`btn btn-secondary mb-2 p-4 ${
+              className={`btn btn-secondary mb-2 p-4 position-relative ${
                 alreadySelected?.answer === "answer2" && "selected"
               } ${
                 checkAnswer && questions?.answer2[0] === ans ? "correct" : ""
@@ -117,13 +121,15 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
             >
               <span> {questions?.answer2}</span>
               {showPercentage && (
-                <span className="fw-bold ml-25 bg-light text-dark py-3 px-2 rounded">{calculateOption2}</span>
+                <span className="fw-bold ml-25 bg-light text-dark py-3 px-2 rounded"  style={{ position: "absolute", right: 7, top: 7 }}>
+                  {calculateOption2}
+                </span>
               )}
             </button>
             <button
               disabled={alreadySelected?.userEmail}
               type="button"
-              className={`btn btn-secondary mb-2 p-4 ${
+              className={`btn btn-secondary mb-2 p-4 position-relative ${
                 alreadySelected?.answer === "answer4" && "selected"
               } ${
                 checkAnswer && questions?.answer4[0] === ans ? "correct" : ""
@@ -134,7 +140,9 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
             >
               <span> {questions?.answer4}</span>{" "}
               {showPercentage && (
-                <span className="fw-bold ml-25 bg-light text-dark py-3 px-2 rounded">{calculateOption4}</span>
+                <span className="fw-bold ml-25 bg-light text-dark py-3 px-2 rounded"  style={{ position: "absolute", right: 7, top: 7 }}>
+                  {calculateOption4}
+                </span>
               )}
             </button>
           </div>
@@ -144,7 +152,7 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
             <button
               disabled={alreadySelected?.userEmail}
               type="button"
-              className={`btn btn-secondary mb-2 p-4 ${
+              className={`btn btn-secondary mb-2 p-4 position-relative ${
                 alreadySelected?.answer === "answer5" && "selected"
               } ${
                 checkAnswer && questions?.answer5[0] === ans ? "correct" : ""
@@ -155,7 +163,9 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
             >
               <span> {questions?.answer5}</span>{" "}
               {showPercentage && (
-                <span className="fw-bold ml-25 bg-light text-dark py-3 px-2 rounded">{calculateOption5}</span>
+                <span className="fw-bold ml-25 bg-light text-dark py-3 px-2 rounded"  style={{ position: "absolute", right: 7, top: 7 }}>
+                  {calculateOption5}
+                </span>
               )}
             </button>
           </div>
