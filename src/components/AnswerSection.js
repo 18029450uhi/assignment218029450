@@ -81,7 +81,7 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
             >
               <span> {questions?.answer0}</span>{" "}
               {showPercentage && (
-                <span className="fw-bold ml-25">({calculateOption0})</span>
+                <span className="fw-bold ml-25 bg-light text-dark py-3 px-2 rounded">{calculateOption0}</span>
               )}
             </button>
             <button
@@ -98,7 +98,7 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
             >
               <span> {questions?.answer3}</span>{" "}
               {showPercentage && (
-                <span className="fw-bold ml-25">({calculateOption3})</span>
+                <span className="fw-bold ml-25 bg-light text-dark py-3 px-2 rounded">{calculateOption3}</span>
               )}
             </button>
           </div>
@@ -117,7 +117,7 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
             >
               <span> {questions?.answer2}</span>
               {showPercentage && (
-                <span className="fw-bold ml-25">({calculateOption2})</span>
+                <span className="fw-bold ml-25 bg-light text-dark py-3 px-2 rounded">{calculateOption2}</span>
               )}
             </button>
             <button
@@ -134,7 +134,7 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
             >
               <span> {questions?.answer4}</span>{" "}
               {showPercentage && (
-                <span className="fw-bold ml-25">({calculateOption4})</span>
+                <span className="fw-bold ml-25 bg-light text-dark py-3 px-2 rounded">{calculateOption4}</span>
               )}
             </button>
           </div>
@@ -155,7 +155,7 @@ function AnswerSection({ quesData, updatedData, setUpdatedData }) {
             >
               <span> {questions?.answer5}</span>{" "}
               {showPercentage && (
-                <span className="fw-bold ml-25">({calculateOption5})</span>
+                <span className="fw-bold ml-25 bg-light text-dark py-3 px-2 rounded">{calculateOption5}</span>
               )}
             </button>
           </div>
