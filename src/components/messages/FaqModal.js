@@ -27,7 +27,7 @@ const FaqModal = ({
       await update(FAQREf, { faq: updatedFaq });
 
       setUpdatedData(!updatedData);
-      console.log("Answer updated successfully!");
+  
     } catch (error) {
       console.error("Error updating answer:", error);
     }
