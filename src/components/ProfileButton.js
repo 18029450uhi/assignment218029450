@@ -51,6 +51,7 @@ function ProfileButton({ updatedData, setUpdatedData }) {
         ></button> */}
 
         <div className="" onClick={handleProfileClick}>
+          <span className="cursor-pointer">{user?.displayName}</span>
           <img
             className="w-50 rounded-circle cursor-pointer"
             style={{ border: "2px solid", cursor: "pointer" }}
