@@ -3,11 +3,15 @@ import { Modal, Button } from "react-bootstrap";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import { firestore } from "../services/firebase";
+import SummeryModal from "./modals/SummeryModal";
 
 const HintsComponent = ({ quesData }) => {
   const data = quesData?.hint;
   //   modal
   const [show, setShow] = useState(false);
+  const [summeryShow, setSummeryShow] = useState(false);
+  const [summeryData, setSummeryData] = useState({});
+
   const [showMsgForm, setShowMsgForm] = useState(false);
   const [sentMsg, setSentMsg] = useState(false);
   const [currentVideo, setCurrentVideo] = useState(null);
@@ -24,7 +28,6 @@ const HintsComponent = ({ quesData }) => {
   const findExistingUser = users.find(
     (user) => user?.email === currentUser?.email
   );
-
 
   const faqData = faq.slice(1);
 
@@ -51,7 +54,15 @@ const HintsComponent = ({ quesData }) => {
   }, []);
 
   const handleClose = () => setShow(false);
+  const handleSummeryClose = () => setSummeryShow(false);
+
+  const handleSummeryShow = (data) => {
+    setSummeryData(data);
+    setSummeryShow(true);
+  };
+
   const handleShow = (video) => {
+    console.log(video);
     setCurrentVideo(video.image);
     setYoutubeVideo(video?.video);
     setLinkType(video?.type + " " + video?.link);
@@ -142,7 +153,7 @@ const HintsComponent = ({ quesData }) => {
         <button
           className="d-block w-100"
           style={buttonStyle}
-          onClick={() => alert(`Displaying image: ${video.image}`)}
+          onClick={() => handleSummeryShow(video)}
         >
           Summary
         </button>
@@ -360,6 +371,11 @@ const HintsComponent = ({ quesData }) => {
             </>
           )}
         </Modal>
+        <SummeryModal
+          summeryShow={summeryShow}
+          handleSummeryClose={handleSummeryClose}
+          summeryData={summeryData}
+        />
       </div>
     </div>
   );

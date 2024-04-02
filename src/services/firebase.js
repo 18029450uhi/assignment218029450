@@ -7,27 +7,22 @@ import "firebase/storage";
 
 import { getFirestore } from "firebase/firestore";
 
-
-
 const firebaseConfig = {
-
   apiKey: "AIzaSyCUSuc45Y3wsARDclwbx2A-2bNp7toas_o",
 
   authDomain: "assignment218029450.firebaseapp.com",
 
-  databaseURL: "https://assignment218029450-default-rtdb.europe-west1.firebasedatabase.app/",
+  databaseURL:
+    "https://assignment218029450-default-rtdb.europe-west1.firebasedatabase.app/",
 
   projectId: "assignment218029450",
 
-  storageBucket: "assignment218029450.appspot.com",
+  storageBucket: "ques-assignment.appspot.com",
 
   messagingSenderId: "841530498032",
   appId: "1:841530498032:web:c6c2cd4dc96c43be469b35",
-  measurementId: "G-EQH69QFRER"
-
+  measurementId: "G-EQH69QFRER",
 };
-
-
 
 
 // Initialize Firebase
