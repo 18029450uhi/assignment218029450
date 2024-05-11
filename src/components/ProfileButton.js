@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-import LiveChat from "./LiveChat";
+//import LiveChat from "./LiveChat";
 import Messages from "./modals/Messages";
 
 function ProfileButton({ updatedData, setUpdatedData }) {
@@ -34,7 +34,7 @@ function ProfileButton({ updatedData, setUpdatedData }) {
     );
   }
 
-  const userInitial = user.displayName ? user.displayName : ""; // user.displayName..charAt(0)
+  const userInitial = user.displayName ? user.displayName : ""; // user.displayName
 
   return (
     <div>
