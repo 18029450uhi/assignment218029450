@@ -5,8 +5,8 @@ The web application development project is a React web application hosted on fir
 Figure 1: High Level Architectural Diagram for Web Application
 
 
-## Installation instructions 
- **Install Dependencies**:
+## Installation instructions  
+
 ## Prerequisites
 
 Before getting started, Git must be installed. It can be downloaded and installed from [here](https://git-scm.com/).
