@@ -62,8 +62,8 @@ The project primarily focused on implementing three key features.
 #### Feature Breakdown: 
 1. **Live Chat Support**:
 
-   **Tickets**: 
-      The live chat feature starts with this ticket: 
+   **Tickets**:   
+      The live chat feature starts with this ticket:    
 
       Add a Messages.js Modal: add the Messages.js in src\components\modals\Messages.js. this modal is called in the ProfileButton.js component. check if it's called properly.	
       Then it goes as follows:
@@ -92,9 +92,9 @@ Figure 8: Feature modification
 ![alt text](image-10.png)
 Figure 9: Testing ticket
 
-<br>The above screenshot shows the development approach of the live chat feature.</br>
+The above screenshot shows the development approach of the live chat feature.
 
-- **Implementation Details**:
+- **Implementation Details**:  
     The user in the live chat can send message directly to the admin. Timestamp is shown. both the admin and the user can send files to the chat. Firestore is used for real-time user list and messaging. 
 
 ![alt text](image-11.png)
@@ -109,6 +109,20 @@ Figure 11: User chat window
 Figure 12: Admin chat window
 
 ![alt text](image-14.png)
-Figure 12: File selection feature for admin.
+Figure 13: File selection feature for admin.
 
-- **Remaining Tasks**: The required functionality   of the live chat feature is implemented. The timestamp can be modified to show the exact time and date.
+- **Remaining Tasks**:  
+ The required functionality   of the live chat feature is implemented. The timestamp can be modified to show the exact time and date.
+
+2. **FAQ Section with Fixes**:
+
+    **Tickets**:   
+    
+    The first ticket is for this feature is 
+ Ticket 1 : FAQButton Component Integration with Firebase in Messages.js : 1) Integrate the FAQButton component with Firebase to fetch and display frequently asked questions related to specific messages.  2) Implement Firebase queries to retrieve FAQ data from the Firebase database and display them within the FAQButton component as needed.
+
+Then this ticket :  
+
+Update FaqButton.js : 1)Implement a function to fetch FAQ data from the Firebase Realtime Database. 2 )Create a database reference to the FAQ data. Retrieve data from the database reference using Firebase's get method.
+
+The subsequent tickets are given below:
