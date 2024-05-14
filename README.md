@@ -231,7 +231,7 @@ The Answer section is showing the percentage based on the selected answer count.
  
 In summary, the methodology involved leveraging React.js and Firebase services to implement key features aimed at enhancing user interaction and experience. Each feature was carefully planned, implemented, and evaluated to ensure functionality and usability. While the initial implementation achieved the desired objectives, there is room for further refinement and expansion to enrich the application further.  
 
-### Evaluation-   
+### Evaluation 
 
 For this assignment, the aim was to create solutions that met the requirements while prioritizing user experience. **React.js** and **Firebase** technologies were utilized to build a responsive and interactive application.  
 
