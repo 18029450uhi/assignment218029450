@@ -97,7 +97,7 @@ The above screenshot shows the development approach of the live chat feature.
 - **Implementation Details**:  
     The user in the live chat can send message directly to the admin. Timestamp is shown. both the admin and the user can send files to the chat. Firestore is used for real-time user list and messaging. 
 
-![alt text](image-11.png)
+![alt text](image-11.png)  
 Figure 10: Live Chat feature Diagram.
 
 - **Screenshots**: 
