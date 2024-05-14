@@ -5,7 +5,7 @@ The web application development project is a React web application hosted on fir
 Figure 1 : High level architecture diagram for Web Application
 
 
-2. ## Installation instructions
+## Installation instructions
  **Install Dependencies**:
 ## Prerequisites
 
@@ -25,5 +25,27 @@ Install Node.js if already not installed.
   In the terminal run  npm start.
 
 4 . **Open the Application**:
-- Visit `http://localhost:3000` in the web browser.
+ Visit `http://localhost:3000` in the web browser.
+ ### Methodology
+
+#### Technologies Used:
+
+Several technologies were utilized to build  this project :
+
+**React.js**:  React.js was chosen for component-based architecture, reusable UI components and increased code organization and maintainability.
+
+**React Bootstrap**: The pre-designed UI components and responsive layout features allowed for the rapid development of a visually appealing and user-friendly interface.
+
+**Firebase Realtime Database**: Firebase Realtime Database used as backend service for storing and retrieving data in real-time. 
+
+**Firebase Storage **: It is used for storing the image folder and other images.
+
+**Firestore Database**: This used for storing and retrieving user data and chat messages. 
+
+**Firebase Authentication**: It was implemented to handle user authentication and authorization. It provided secure and scalable authentication services.
+
+**JavaScript/ES6**: Extensively utilized for application logic and feature implementation due to modern syntax and powerful capabilities.
+
+**HTML/CSS**: Employed for structuring web pages and styling UI, offering foundation for visually appealing and responsive layouts.
+
 
