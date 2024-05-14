@@ -166,7 +166,73 @@ Figure 23: Admin’s option to add answer to specific hints video
 
 
 - **Remaining Tasks**:  
-The FAQ section has been added to the Hints Section as mentioned in the requirement. This functionality gives the admin ability to add the FAQ in particular video.
+The FAQ section has been added to the Hints Section as mentioned in the requirement. This functionality gives the admin ability to add the FAQ in particular video.  
+
+
+**3**. **Question Page with Overall Percentage Hinting**:  
+
+- **Tickets**:   
+
+The first ticket is :  
+
+Update question section with image and question data: 1)Implement logic to display the question image, if available, from the quesData prop. 2)Implement logic to display the question text from the quesData prop. 3) update the styling
+
+![alt text](image-25.png)
+Figure 24: Initial tickets  
+
+![alt text](image-26.png)
+Figure 25: subsequent tickets  
+
+The above screenshot of tickets show the approach for developing this feature.
+
+- **Implementation Details**:  
+ 
+ Developed a question page that displays questions and multiple-choice answers. The show correct answer button only works after an answer has been selected.  
+
+ - Implemented hinting functionality to show the overall percentage of  responses for each answer option.  
+ - Users' responses are only counted once, and the percentage resets after each question. Admin can reset the response count.  
+- Buttons for selecting answers are conditionally disabled based on the user's authentication status.  
+- Once a user answers a question, the answered question is marked with a distinct colour upon subsequent logins.  
+
+
+![alt text](image-27.png)
+Figure 26 : Percentage Calculation Diagram.
+
+- **Screenshots**: 
+
+![alt text](image-28.png)
+Figure 27: Selected answer.  
+
+![alt text](image-29.png)
+Figure 28: Displaying Correct Answer
+
+![alt text](image-30.png)
+Figure 29: Calculating and Displaying Percentage
+
+- **Remaining Tasks**:  
+The Answer section is showing the percentage based on the selected answer count. Based on the requirement given this feature is working properly.   
+ 
+In summary, the methodology involved leveraging React.js and Firebase services to implement key features aimed at enhancing user interaction and experience. Each feature was carefully planned, implemented, and evaluated to ensure functionality and usability. While the initial implementation achieved the desired objectives, there is room for further refinement and expansion to enrich the application further.  
+
+### Evaluation-   
+
+For this assignment, the aim was to create solutions that met the requirements while prioritizing user experience. **React.js** and **Firebase** technologies were utilized to build a responsive and interactive application.  
+
+For the Live Chat Support feature, real-time communication is ensured through Firestore database, enabling immediate interaction between users and admin. Both admin and user can send files through the chat window. The chat feature offers users additional interaction options apart from the Confused button section. React Bootstrap made the chat interface visually appealing. However,  potential improvements could be made by adding message notifications for improved user engagement. The overall look, colour and design of the chat window can be modified for better experience. Only the user and admin can exchange messages. This can be extended to include interactions among users.  
+
+The video and summary section could have included the option to move between questions for better user interaction.  
+
+The FAQ Section with Fixes provided users with easy access to solutions for common queries. Integrating fixes in various formats catered to different user preferences. The admin could add FAQ section to a particular video in the hints section. Also. the user’s query message shows the heading from which video the query is being made . Giving the admin opportunity to add answer to that section. Search functionality, categorizing FAQs, and allowing users to submit new questions can be considered for improvement.  
+
+The Overall Percentage Hinting aimed to assist users in decision-making by showing the combined responses. Ensuring each user's response counted once and marking answered questions upon subsequent logins enhanced user engagement.   
+Future iterations may include integrating charts for response percentages, allowing users to answer questions multiple times with automatic resets, and refining the logic for checking percentages.  
+The hints section component can be broken down into subcomponents for better reusability  and maintainability of the code.  
+
+Overall, the methodology applied here focused on delivering functional solutions while considering the user experience. Continuous refinement based on user feedback will drive improvement and ensure the application meets changing user needs.
+
+
+
+
 
 
 
