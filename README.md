@@ -71,28 +71,28 @@ The project primarily focused on implementing three key features.
       Add a Messages.js Modal: add the Messages.js in src\components\modals\Messages.js. this modal is called in the ProfileButton.js component. check if it's called properly.	
       Then it goes as follows:
 
-![alt text](image-2.png)
+![alt text](image-2.png)  
 Figure 2: Firebase Integration  for Chat Feature
 
-![alt text](image-4.png)
+![alt text](image-4.png)  
 Figure 3: Components Creation
 
-![alt text](image-5.png)
+![alt text](image-5.png)    
 Figure 4 : Chat Window Feature 
 
-![alt text](image-6.png)
+![alt text](image-6.png)      
 Figure 5: Sendmessage.js Update
 
-![alt text](image-7.png)
+![alt text](image-7.png)   
 Figure 6: Further Modification 
 
-![alt text](image-8.png)
+![alt text](image-8.png)   
 Figure 7: Chat Window Update 
 
-![alt text](image-9.png)
+![alt text](image-9.png)   
 Figure 8: Feature Modification
 
-![alt text](image-10.png)
+![alt text](image-10.png)   
 Figure 9: Testing of Feture
 
 The few example tickets above  show the development approach of the live chat feature.
@@ -100,23 +100,23 @@ The few example tickets above  show the development approach of the live chat fe
 - **Implementation Details**:  
     The user in the live chat can send message directly to the admin. Timestamp is shown. both the admin and the user can send files to the chat. Firestore is used for real-time user list and messaging. 
 
-![alt text](image-11.png)  
+![alt text](image-11.png)   
 Figure 10: Live Chat Feature Diagram.
 
 - **Screenshots**: 
-![alt text](image-32.png)
+![alt text](image-32.png)  
 Figure 11: Firestore for Users and Messages Collection  
 
-![alt text](image-12.png)
+![alt text](image-12.png)  
 Figure 12: User Chat Window
 
-![alt text](image-13.png)
+![alt text](image-13.png)  
 Figure 13: Admin Chat Window
 
-![alt text](image-14.png)
+![alt text](image-14.png)   
 Figure 14: File Selection Feature For Admin.  
 
-![alt text](image-31.png)  
+![alt text](image-31.png)     
 Figure 15: File Selection Feature for User
 
 
@@ -137,16 +137,16 @@ Update FaqButton.js : 1)Implement a function to fetch FAQ data from the Firebase
 
 Some example of subsequent tickets are given below:  
 
-![alt text](image-15.png)
+![alt text](image-15.png)   
 Figure 16: Further Tickets
 
-![alt text](image-16.png)
+![alt text](image-16.png)   
 Figure 17: FAQ Modal Rendering
 
-![alt text](image-17.png)
+![alt text](image-17.png)   
 Figure 18: Working on FaqModal.js 
 
-![alt text](image-18.png)
+![alt text](image-18.png)   
 Figure 19: Final Tickets  
 
 The Few example tickets above show how the FAQ feature was approached.  
@@ -154,26 +154,26 @@ The Few example tickets above show how the FAQ feature was approached.
 - **Implementation Details**:  
 Designed and Implemented FAQ section with fixes (videos, images, text) at timestamps. FAQ Button.js manages modal visibility, fetching data from Firebase Realtime Database. Modal updates Firebase and Firestore when adding FAQ message.  
 
-![alt text](image-19.png)
+![alt text](image-19.png)   
 Figure 20: FAQ Feature Diagram  
 
 - **Screenshots**:   
-![alt text](image-35.png)  
+![alt text](image-35.png)     
 Figure 21: Realtime Database for FAQ section     
 
-![alt text](image-20.png)
+![alt text](image-20.png)   
 Figure 22: Admin View of FAQ Section 
 
-![alt text](image-21.png)
+![alt text](image-21.png)   
 Figure 23: User View of FAQ Section With Confused Button  
 
-![alt text](image-22.png)
+![alt text](image-22.png)   
 Figure 24: Add to FAQ’s Button Visible on Admin Chat   
 
-![alt text](image-23.png)
+![alt text](image-23.png)   
 Figure 25: User Query Indicating Specific Section Heading  
 
-![alt text](image-24.png)
+![alt text](image-24.png)   
 Figure 26: Admin’s Option to Add Answer to Specific Hints Video
 
 
@@ -189,10 +189,10 @@ The first ticket is :
 
 Update question section with image and question data: 1)Implement logic to display the question image, if available, from the quesData prop. 2)Implement logic to display the question text from the quesData prop. 3) update the styling
 
-![alt text](image-25.png)
+![alt text](image-25.png)   
 Figure 27: Initial Tickets  
 
-![alt text](image-26.png)
+![alt text](image-26.png)   
 Figure 28: Subsequent Tickets  
 
 The above screenshots of few tickets show the working process for developing this feature.
@@ -207,23 +207,23 @@ The above screenshots of few tickets show the working process for developing thi
 - Once a user answers a question, the answered question is marked with a distinct colour upon subsequent logins.  
 
 
-![alt text](image-27.png)
+![alt text](image-27.png)  
 Figure 29: Percentage Calculation Diagram.
 
 - **Screenshots**: 
-![alt text](image-33.png)  
+![alt text](image-33.png)     
 Figure 30: Realtime Database for Storing Selected Answer  
 
-![alt text](image-34.png)  
+![alt text](image-34.png)     
 Figure 31: Reatime Database for Answer count
 
-![alt text](image-28.png)
+![alt text](image-28.png)   
 Figure 32: Selected Answer.  
 
-![alt text](image-29.png)
+![alt text](image-29.png)  
 Figure 33: Displaying Correct Answer
 
-![alt text](image-30.png)
+![alt text](image-30.png)   
 Figure 34: Calculating and Displaying Percentage
 
 - **Remaining Tasks**:  
