@@ -104,6 +104,8 @@ The few example tickets above  show the development approach of the live chat fe
 Figure 10: Live Chat Feature Diagram.
 
 - **Screenshots**: 
+![alt text](image-32.png)
+Figure 11: Firestore for Users and Messages Collection  
 
 ![alt text](image-12.png)
 Figure 11: User Chat Window
@@ -155,7 +157,9 @@ Designed and Implemented FAQ section with fixes (videos, images, text) at timest
 ![alt text](image-19.png)
 Figure 19: FAQ Feature Diagram  
 
-- **Screenshots**:  
+- **Screenshots**:   
+![alt text](image-35.png)  
+Figure : Realtime Database for FAQ section     
 
 ![alt text](image-20.png)
 Figure 20: Admin View of FAQ Section 
@@ -207,6 +211,11 @@ The above screenshots of few tickets show the working process for developing thi
 Figure 27: Percentage Calculation Diagram.
 
 - **Screenshots**: 
+![alt text](image-33.png)  
+Figure : Realtime Database for Storing Selected Answer  
+
+![alt text](image-34.png)  
+Figure : Reatime Database for Answer count
 
 ![alt text](image-28.png)
 Figure 28: Selected Answer.  
