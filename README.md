@@ -63,6 +63,7 @@ The project primarily focused on implementing three key features.
 1. **Live Chat Support**:
    **Tickets**: 
       The live chat feature starts with this ticket: 
+
       Add a Messages.js Modal: add the Messages.js in src\components\modals\Messages.js. this modal is called in the ProfileButton.js component. check if it's called properly.	
       Then it goes as follows:
 
