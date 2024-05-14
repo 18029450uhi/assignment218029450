@@ -2,7 +2,7 @@
 ## Introduction 
 The web application development project is a React web application hosted on firebase, featuring live chat support, FAQ section with fixes and hinting using overall response percentages. The live chat feature supports user get quick answers to their queries and issues from the admin. The question help feature now includes an overall percentage,indicating the popularity of each answer option based on user responses, enhancing decision-making with collective feedback. The app has fully functional authentication login process which gives access to Question page. As users navigate through the video section, any associated FAQs are seamlessly integrated, providing additional context and answers alongside the relevant videos for problem-solving and user support.The data are stored in firebase. The component model of the React app ensures that different parts of the website work together smoothly.
 ![alt text](image-1.png)
-Figure 1 : High level architecture diagram for Web Application
+Figure 1: High Level Architectural Diagram for Web Application
 
 
 ## Installation instructions 
@@ -13,25 +13,28 @@ Before getting started, Git must be installed. It can be downloaded and installe
 
 ## Getting Started
 
-1. **Clone the Repository** 
+1. **Clone the Repository**   
 
-    <p>git clone https://github.com/18029450uhi/assignment218029450.git </p>
+     git clone https://github.com/18029450uhi/assignment218029450.git
 
-2. **Install Dependencies**
+2. **Install Dependencies**   
+
  - cd /repository
  - npm install
  - Install Node.js if already not installed.
-3. **Start the Development Server**
+3. **Start the Development Server**   
+
      In the terminal run  npm start.
 
-4. **Open the Application**
+4. **Open the Application**    
+
      Visit `http://localhost:3000` in the web browser.
 
-### Methodology
+### Methodology  
 
-#### Technologies Used:
+#### Technologies Used:  
 
- Several technologies were utilized to build  this project :
+ Several technologies were utilized to build  this project :  
 
 - **React.js**:  React.js was chosen for component-based architecture, reusable UI components and increased code organization and maintainability.
 
@@ -69,47 +72,52 @@ The project primarily focused on implementing three key features.
       Then it goes as follows:
 
 ![alt text](image-2.png)
-Figure 2 : Firebase integration  for chat feature
+Figure 2: Firebase Integration  for Chat Feature
 
 ![alt text](image-4.png)
-Figure 3: Components creation
+Figure 3: Components Creation
 
 ![alt text](image-5.png)
-Figure 4 : Chat window feature 
+Figure 4 : Chat Window Feature 
 
 ![alt text](image-6.png)
-Figure 5: Sendmessage.js update
+Figure 5: Sendmessage.js Update
 
 ![alt text](image-7.png)
-Figure 6: Further modification 
+Figure 6: Further Modification 
 
 ![alt text](image-8.png)
-Figure 7: Chat window update 
+Figure 7: Chat Window Update 
 
 ![alt text](image-9.png)
-Figure 8: Feature modification
+Figure 8: Feature Modification
 
 ![alt text](image-10.png)
-Figure 9: Testing ticket
+Figure 9: Testing of Feture
 
-The above screenshot shows the development approach of the live chat feature.
+The few example tickets above  show the development approach of the live chat feature.
 
 - **Implementation Details**:  
     The user in the live chat can send message directly to the admin. Timestamp is shown. both the admin and the user can send files to the chat. Firestore is used for real-time user list and messaging. 
 
 ![alt text](image-11.png)  
-Figure 10: Live Chat feature Diagram.
+Figure 10: Live Chat Feature Diagram.
 
 - **Screenshots**: 
 
 ![alt text](image-12.png)
-Figure 11: User chat window
+Figure 11: User Chat Window
 
 ![alt text](image-13.png)
-Figure 12: Admin chat window
+Figure 12: Admin Chat Window
 
 ![alt text](image-14.png)
-Figure 13: File selection feature for admin.
+Figure 13: File Selection Feature For Admin.  
+
+![alt text](image-31.png)  
+Figure 14: File Selection Feature for User
+
+
 
 - **Remaining Tasks**:  
  The required functionality   of the live chat feature is implemented. The timestamp can be modified to show the exact time and date.
@@ -125,44 +133,44 @@ Then this ticket :
 
 Update FaqButton.js : 1)Implement a function to fetch FAQ data from the Firebase Realtime Database. 2 )Create a database reference to the FAQ data. Retrieve data from the database reference using Firebase's get method.
 
-The subsequent tickets are given below:  
+Some example of subsequent tickets are given below:  
 
 ![alt text](image-15.png)
-Figure 14: Further tickets
+Figure 15: Further Tickets
 
 ![alt text](image-16.png)
-Figure 15: FAQ modal rendering
+Figure 16: FAQ Modal Rendering
 
 ![alt text](image-17.png)
-Figure 16: Working on FaqModal.js 
+Figure 17: Working on FaqModal.js 
 
 ![alt text](image-18.png)
-Figure 17: Final tickets
+Figure 18: Final Tickets  
 
-All the tickets show how the FAQ feature was approached.  
+The Few example tickets above show how the FAQ feature was approached.  
 
 - **Implementation Details**:  
 Designed and Implemented FAQ section with fixes (videos, images, text) at timestamps. FAQ Button.js manages modal visibility, fetching data from Firebase Realtime Database. Modal updates Firebase and Firestore when adding FAQ message.  
 
 ![alt text](image-19.png)
-Figure 18 : FAQ Feature Diagram  
+Figure 19: FAQ Feature Diagram  
 
 - **Screenshots**:  
 
 ![alt text](image-20.png)
-Figure 19: Admin view of FAQ section 
+Figure 20: Admin View of FAQ Section 
 
 ![alt text](image-21.png)
-Figure 20: User view of FAQ section with confused button  
+Figure 21: User View of FAQ Section With Confused Button  
 
 ![alt text](image-22.png)
-Figure 21: Add to FAQ’s Button visible on Admin chat 
+Figure 22: Add to FAQ’s Button Visible on Admin Chat   
 
 ![alt text](image-23.png)
-Figure 22: User query indicating specific section heading  
+Figure 23: User Query Indicating Specific Section Heading  
 
 ![alt text](image-24.png)
-Figure 23: Admin’s option to add answer to specific hints video
+Figure 24: Admin’s Option to Add Answer to Specific Hints Video
 
 
 - **Remaining Tasks**:  
@@ -178,12 +186,12 @@ The first ticket is :
 Update question section with image and question data: 1)Implement logic to display the question image, if available, from the quesData prop. 2)Implement logic to display the question text from the quesData prop. 3) update the styling
 
 ![alt text](image-25.png)
-Figure 24: Initial tickets  
+Figure 25: Initial Tickets  
 
 ![alt text](image-26.png)
-Figure 25: subsequent tickets  
+Figure 26: Subsequent Tickets  
 
-The above screenshot of tickets show the approach for developing this feature.
+The above screenshots of few tickets show the working process for developing this feature.
 
 - **Implementation Details**:  
  
@@ -196,18 +204,18 @@ The above screenshot of tickets show the approach for developing this feature.
 
 
 ![alt text](image-27.png)
-Figure 26 : Percentage Calculation Diagram.
+Figure 27: Percentage Calculation Diagram.
 
 - **Screenshots**: 
 
 ![alt text](image-28.png)
-Figure 27: Selected answer.  
+Figure 28: Selected Answer.  
 
 ![alt text](image-29.png)
-Figure 28: Displaying Correct Answer
+Figure 29: Displaying Correct Answer
 
 ![alt text](image-30.png)
-Figure 29: Calculating and Displaying Percentage
+Figure 30: Calculating and Displaying Percentage
 
 - **Remaining Tasks**:  
 The Answer section is showing the percentage based on the selected answer count. Based on the requirement given this feature is working properly.   
