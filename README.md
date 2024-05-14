@@ -60,7 +60,7 @@ The project primarily focused on implementing three key features.
 
 
 #### Feature Breakdown: 
-1. **Live Chat Support**:
+**1**. **Live Chat Support**:
 
    **Tickets**:   
       The live chat feature starts with this ticket:    
@@ -114,15 +114,59 @@ Figure 13: File selection feature for admin.
 - **Remaining Tasks**:  
  The required functionality   of the live chat feature is implemented. The timestamp can be modified to show the exact time and date.
 
-2. **FAQ Section with Fixes**:
+**2**. **FAQ Section with Fixes**:
 
-    **Tickets**:   
+**Tickets**:   
     
-    The first ticket is for this feature is 
+ The first ticket is for this feature is  
  Ticket 1 : FAQButton Component Integration with Firebase in Messages.js : 1) Integrate the FAQButton component with Firebase to fetch and display frequently asked questions related to specific messages.  2) Implement Firebase queries to retrieve FAQ data from the Firebase database and display them within the FAQButton component as needed.
 
-Then this ticket :  
+Then this ticket :   
 
 Update FaqButton.js : 1)Implement a function to fetch FAQ data from the Firebase Realtime Database. 2 )Create a database reference to the FAQ data. Retrieve data from the database reference using Firebase's get method.
 
-The subsequent tickets are given below:
+The subsequent tickets are given below:  
+
+![alt text](image-15.png)
+Figure 14: Further tickets
+
+![alt text](image-16.png)
+Figure 15: FAQ modal rendering
+
+![alt text](image-17.png)
+Figure 16: Working on FaqModal.js 
+
+![alt text](image-18.png)
+Figure 17: Final tickets
+
+All the tickets show how the FAQ feature was approached.  
+
+- **Implementation Details**:  
+Designed and Implemented FAQ section with fixes (videos, images, text) at timestamps. FAQ Button.js manages modal visibility, fetching data from Firebase Realtime Database. Modal updates Firebase and Firestore when adding FAQ message.  
+
+![alt text](image-19.png)
+Figure 18 : FAQ Feature Diagram  
+
+- **Screenshots**:  
+
+![alt text](image-20.png)
+Figure 19: Admin view of FAQ section 
+
+![alt text](image-21.png)
+Figure 20: User view of FAQ section with confused button  
+
+![alt text](image-22.png)
+Figure 21: Add to FAQ’s Button visible on Admin chat 
+
+![alt text](image-23.png)
+Figure 22: User query indicating specific section heading  
+
+![alt text](image-24.png)
+Figure 23: Admin’s option to add answer to specific hints video
+
+
+- **Remaining Tasks**:  
+The FAQ section has been added to the Hints Section as mentioned in the requirement. This functionality gives the admin ability to add the FAQ in particular video.
+
+
+
