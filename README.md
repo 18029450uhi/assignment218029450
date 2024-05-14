@@ -15,17 +15,17 @@ Before getting started, Git must be installed. It can be downloaded and installe
 
 1. **Clone the Repository**
 
-  git clone https://github.com/18029450uhi/assignment218029450.git
+    <p>git clone https://github.com/18029450uhi/assignment218029450.git </p>
 
 2. **Install Dependencies**:
  - cd /repository
  - npm install
  - Install Node.js if already not installed.
 3. **Start the Development Server**:
-  In the terminal run  npm start.
+  <p>In the terminal run  npm start.</p>
 
-4 . **Open the Application**:
- Visit `http://localhost:3000` in the web browser.
+4. **Open the Application**:
+<p> Visit `http://localhost:3000` in the web browser.</p>
  ### Methodology
 
 #### Technologies Used:
