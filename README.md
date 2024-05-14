@@ -108,16 +108,16 @@ Figure 10: Live Chat Feature Diagram.
 Figure 11: Firestore for Users and Messages Collection  
 
 ![alt text](image-12.png)
-Figure 11: User Chat Window
+Figure 12: User Chat Window
 
 ![alt text](image-13.png)
-Figure 12: Admin Chat Window
+Figure 13: Admin Chat Window
 
 ![alt text](image-14.png)
-Figure 13: File Selection Feature For Admin.  
+Figure 14: File Selection Feature For Admin.  
 
 ![alt text](image-31.png)  
-Figure 14: File Selection Feature for User
+Figure 15: File Selection Feature for User
 
 
 
@@ -138,16 +138,16 @@ Update FaqButton.js : 1)Implement a function to fetch FAQ data from the Firebase
 Some example of subsequent tickets are given below:  
 
 ![alt text](image-15.png)
-Figure 15: Further Tickets
+Figure 16: Further Tickets
 
 ![alt text](image-16.png)
-Figure 16: FAQ Modal Rendering
+Figure 17: FAQ Modal Rendering
 
 ![alt text](image-17.png)
-Figure 17: Working on FaqModal.js 
+Figure 18: Working on FaqModal.js 
 
 ![alt text](image-18.png)
-Figure 18: Final Tickets  
+Figure 19: Final Tickets  
 
 The Few example tickets above show how the FAQ feature was approached.  
 
@@ -155,26 +155,26 @@ The Few example tickets above show how the FAQ feature was approached.
 Designed and Implemented FAQ section with fixes (videos, images, text) at timestamps. FAQ Button.js manages modal visibility, fetching data from Firebase Realtime Database. Modal updates Firebase and Firestore when adding FAQ message.  
 
 ![alt text](image-19.png)
-Figure 19: FAQ Feature Diagram  
+Figure 20: FAQ Feature Diagram  
 
 - **Screenshots**:   
 ![alt text](image-35.png)  
-Figure : Realtime Database for FAQ section     
+Figure 21: Realtime Database for FAQ section     
 
 ![alt text](image-20.png)
-Figure 20: Admin View of FAQ Section 
+Figure 22: Admin View of FAQ Section 
 
 ![alt text](image-21.png)
-Figure 21: User View of FAQ Section With Confused Button  
+Figure 23: User View of FAQ Section With Confused Button  
 
 ![alt text](image-22.png)
-Figure 22: Add to FAQ’s Button Visible on Admin Chat   
+Figure 24: Add to FAQ’s Button Visible on Admin Chat   
 
 ![alt text](image-23.png)
-Figure 23: User Query Indicating Specific Section Heading  
+Figure 25: User Query Indicating Specific Section Heading  
 
 ![alt text](image-24.png)
-Figure 24: Admin’s Option to Add Answer to Specific Hints Video
+Figure 26: Admin’s Option to Add Answer to Specific Hints Video
 
 
 - **Remaining Tasks**:  
@@ -190,10 +190,10 @@ The first ticket is :
 Update question section with image and question data: 1)Implement logic to display the question image, if available, from the quesData prop. 2)Implement logic to display the question text from the quesData prop. 3) update the styling
 
 ![alt text](image-25.png)
-Figure 25: Initial Tickets  
+Figure 27: Initial Tickets  
 
 ![alt text](image-26.png)
-Figure 26: Subsequent Tickets  
+Figure 28: Subsequent Tickets  
 
 The above screenshots of few tickets show the working process for developing this feature.
 
@@ -208,23 +208,23 @@ The above screenshots of few tickets show the working process for developing thi
 
 
 ![alt text](image-27.png)
-Figure 27: Percentage Calculation Diagram.
+Figure 29: Percentage Calculation Diagram.
 
 - **Screenshots**: 
 ![alt text](image-33.png)  
-Figure : Realtime Database for Storing Selected Answer  
+Figure 30: Realtime Database for Storing Selected Answer  
 
 ![alt text](image-34.png)  
-Figure : Reatime Database for Answer count
+Figure 31: Reatime Database for Answer count
 
 ![alt text](image-28.png)
-Figure 28: Selected Answer.  
+Figure 32: Selected Answer.  
 
 ![alt text](image-29.png)
-Figure 29: Displaying Correct Answer
+Figure 33: Displaying Correct Answer
 
 ![alt text](image-30.png)
-Figure 30: Calculating and Displaying Percentage
+Figure 34: Calculating and Displaying Percentage
 
 - **Remaining Tasks**:  
 The Answer section is showing the percentage based on the selected answer count. Based on the requirement given this feature is working properly.   
