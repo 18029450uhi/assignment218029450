@@ -13,25 +13,25 @@ Before getting started, Git must be installed. It can be downloaded and installe
 
 ## Getting Started
 
-1. **Clone the Repository**
+1. **Clone the Repository** 
 
     <p>git clone https://github.com/18029450uhi/assignment218029450.git </p>
 
-2. **Install Dependencies**:
+2. **Install Dependencies**
  - cd /repository
  - npm install
  - Install Node.js if already not installed.
-3. **Start the Development Server**:
-    <p>In the terminal run  npm start.</p>
+3. **Start the Development Server**
+     In the terminal run  npm start.
 
-4. **Open the Application**:
-     <p> Visit `http://localhost:3000` in the web browser.</p>
+4. **Open the Application**
+     Visit `http://localhost:3000` in the web browser.
 
 ### Methodology
 
 #### Technologies Used:
 
-Several technologies were utilized to build  this project :
+ Several technologies were utilized to build  this project :
 
 - **React.js**:  React.js was chosen for component-based architecture, reusable UI components and increased code organization and maintainability.
 
@@ -61,11 +61,12 @@ The project primarily focused on implementing three key features.
 
 #### Feature Breakdown: 
 1. **Live Chat Support**:
-    - **Tickets**: 
-The live chat feature starts with this ticket : 
-Add a Messages.js Modal: add the Messages.js in src\components\modals\Messages.js. this modal is called in the ProfileButton.js component. check if it's called properly.	
-Then it goes as follows:
- ![alt text](image-2.png)
+   **Tickets**: 
+      The live chat feature starts with this ticket: 
+      Add a Messages.js Modal: add the Messages.js in src\components\modals\Messages.js. this modal is called in the ProfileButton.js component. check if it's called properly.	
+      Then it goes as follows:
+
+![alt text](image-2.png)
 Figure 2 : Firebase integration  for chat feature
 
 ![alt text](image-4.png)
