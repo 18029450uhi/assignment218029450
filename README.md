@@ -5,7 +5,7 @@ The web application development project is a React web application hosted on fir
 Figure 1 : High level architecture diagram for Web Application
 
 
-## Installation instructions
+## Installation instructions 
  **Install Dependencies**:
 ## Prerequisites
 
@@ -15,12 +15,12 @@ Before getting started, Git must be installed. It can be downloaded and installe
 
 1. **Clone the Repository**
 
-git clone https://github.com/18029450uhi/assignment218029450.git
+  git clone https://github.com/18029450uhi/assignment218029450.git
 
 2. **Install Dependencies**:
-cd /repository
-npm install
-Install Node.js if already not installed.
+ - cd /repository
+ - npm install
+ - Install Node.js if already not installed.
 3. **Start the Development Server**:
   In the terminal run  npm start.
 
